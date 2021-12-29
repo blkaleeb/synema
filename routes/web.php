@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\IndexController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,5 +19,14 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
+Route::group(
+    ['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth']],
+    function () {
+        Route::get('dashboard', [IndexController::class, 'index']);
+        Route::resource('songs', '\App\Http\Controllers\Admin\SongsController');
+        // Route::resource('products', '\App\Http\Controllers\Admin\ProductController');
+    }
+);
 
 Route::get('/cms', [App\Http\Controllers\Admin\IndexController::class, 'index'])->name('cms');

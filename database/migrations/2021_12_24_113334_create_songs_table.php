@@ -18,7 +18,7 @@ class CreateSongsTable extends Migration
             $table->string('title');
             $table->string('artists');
             $table->string('genre');
-            $table->integer('likes');
+            $table->integer('likes')->nullable();
             $table->timestamps();
         });
     }
