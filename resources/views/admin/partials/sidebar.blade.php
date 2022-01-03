@@ -19,42 +19,48 @@
         <div class="" data-simplebar style="height: 100%;">
             <!-- sidebar menu -->
             <ul class="nav sidebar-inner" id="sidebar-menu">
-                {{-- <li class="has-sub active expand">
-                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
-                        data-target="#dashboard" aria-expanded="false" aria-controls="dashboard">
-                        <i class="mdi mdi-view-dashboard-outline"></i>
-                        <span class="nav-text">Dashboard</span> <b class="caret"></b>
-                    </a>
-
-                    <ul class="collapse show" id="dashboard" data-parent="#sidebar-menu">
-                        <div class="sub-menu">
-                            <li class="active">
-                                <a class="sidenav-item-link" href="index.html">
-                                    <span class="nav-text">Ecommerce</span>
-                                </a>
-                            </li>
-
-                            <li class="">
-                                <a class="sidenav-item-link" href="analytics.html">
-                                    <span class="nav-text">Analytics</span>
-                                    <span class="badge badge-success">new</span>
-                                </a>
-                            </li>
-                        </div>
-                    </ul>
-                </li> --}}
-
+                
                 <li class="">
                     <a class="sidenav-item-link" href="{{ url('admin/songs') }}">
                         <i class="mdi mdi-library-music"></i>
                         <span class="nav-text">Songs</span>
                     </a>
                 </li>
-
+                
                 <li class="">
-                    <a class="sidenav-item-link" href="{{ url('admin/songs') }}">
+                    <a class="sidenav-item-link" href="{{ url('admin/articles') }}">
                         <i class="mdi mdi-library-music"></i>
                         <span class="nav-text">Blog</span>
+                    </a>
+                </li>
+                
+                <li class="has-sub active expand">
+                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
+                        data-target="#dashboard" aria-expanded="false" aria-controls="dashboard">
+                        <i class="mdi mdi-view-dashboard-outline"></i>
+                        <span class="nav-text">Article</span> <b class="caret"></b>
+                    </a>
+
+                    <ul class="collapse show" id="dashboard" data-parent="#sidebar-menu">
+                        <div class="sub-menu">
+                            <li class="active">
+                                <a class="sidenav-item-link" href="{{ url('admin/articles') }}">
+                                    <span class="nav-text">Articles</span>
+                                </a>
+                            </li>
+
+                            <li class="">
+                                <a class="sidenav-item-link" href="{{ url('admin/tags') }}">
+                                    <span class="nav-text">Tags</span>
+                                </a>
+                            </li>
+                        </div>
+                    </ul>
+                </li>
+                <li class="">
+                    <a class="sidenav-item-link" href="{{ url('admin/articles') }}">
+                        <i class="mdi mdi-library-music"></i>
+                        <span class="nav-text"></span>
                     </a>
                 </li>
 
@@ -546,8 +552,8 @@
                                 </a>
                             </li>
                         </div>
-                    </ul> --}}
-                </li>
+                    </ul> 
+                </li>--}}
 
                 <!-- <li class="section-title">
               Documentation

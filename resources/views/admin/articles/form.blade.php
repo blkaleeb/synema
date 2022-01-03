@@ -23,7 +23,7 @@
                     @endif
                         <div class="form-group">
                             {!! Form::label('image', 'Image') !!}
-                            <div class="col-sm-3">
+                            <div class="col-sm-6">
                                 {!! Form::file('images[0]', ['id' => 'mainImage']) !!}
                             </div>
                         </div>

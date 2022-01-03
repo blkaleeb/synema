@@ -28,7 +28,7 @@ Route::group(
         Route::resource('songs', '\App\Http\Controllers\Admin\SongsController');
         Route::resource('links', '\App\Http\Controllers\Admin\LinksController');
         Route::resource('articles', '\App\Http\Controllers\Admin\BlogController');
-        // Route::resource('products', '\App\Http\Controllers\Admin\ProductController');
+        Route::resource('tags', '\App\Http\Controllers\Admin\TagsController');
     }
 );
 
