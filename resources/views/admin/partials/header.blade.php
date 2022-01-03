@@ -20,7 +20,7 @@
 
         <div class="navbar-right ">
             <ul class="nav navbar-nav">
-                <li class="dropdown notifications-menu custom-dropdown">
+                {{-- <li class="dropdown notifications-menu custom-dropdown">
                     <button class="dropdown-toggle notify-toggler custom-dropdown-toggler">
                         <i class="mdi mdi-bell-outline"></i>
                     </button>
@@ -586,7 +586,7 @@
                             <a class="text-center" href="#"> View All </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 <li class="right-sidebar-in right-sidebar-2-menu">
                     <i class="mdi mdi-settings mdi-spin"></i>
                 </li>

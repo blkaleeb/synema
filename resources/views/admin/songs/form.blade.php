@@ -3,7 +3,7 @@
 @section('content')
 
 @php
-    $formTitle = !empty($song) ? 'Update' : 'New'    
+    $formTitle = !empty($songs) ? 'Update' : 'New'    
 @endphp
 
 <div class="content">
@@ -15,8 +15,8 @@
                 </div>
                 <div class="card-body">
                     @include('admin.partials.flash', ['$errors' => $errors])
-                    @if (!empty($song))
-                        {!! Form::model($song, ['url' => ['admin/songs', $song->id], 'method' => 'PUT']) !!}
+                    @if (!empty($songs))
+                        {!! Form::model($songs, ['url' => ['admin/songs', $songs->id], 'method' => 'PUT']) !!}
                         {!! Form::hidden('id') !!}
                     @else
                         {!! Form::open(['url' => 'admin/songs']) !!}
@@ -36,10 +36,6 @@
                         <div class="form-group">
                             {!! Form::label('sound', 'Sound') !!}
                             {!! Form::file('sound', ['class' => 'form-control']) !!}
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('price', 'Price') !!}
-                            {!! Form::text('price', null, ['class' => 'form-control', 'placeholder' => 'price']) !!}
                         </div>
                         <div class="form-footer pt-5 border-top">
                             <button type="submit" class="btn btn-primary btn-default">Save</button>

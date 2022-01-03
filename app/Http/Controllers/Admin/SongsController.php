@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Songs;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str; 
 
 class SongsController extends Controller
 {
@@ -15,7 +16,7 @@ class SongsController extends Controller
      */
     public function index()
     {
-        $this->data['songs'] = Songs::orderBy('parent_id', 'ASC')->paginate(10);
+        $this->data['songs'] = Songs::orderBy('title', 'ASC')->paginate(10);
 
         return view('admin.songs.index', $this->data);
     }
@@ -39,7 +40,22 @@ class SongsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|unique:songs|max:255',
+            'artists' => 'required',
+            'genre' => 'required',
+        ]);
+
+        $songs = new Songs();
+        $songs->title = $request->title;
+        $songs->artists = $request->artists;
+        $songs->genre = $request->genre;
+        $songs->likes = 0;
+        $songs->slug = Str::slug($request->title);
+
+        $songs->save();
+
+        return redirect('admin/songs')->with(['success' => 'Lagu berhasil disimpan!']);
     }
 
     /**
@@ -50,7 +66,9 @@ class SongsController extends Controller
      */
     public function show($id)
     {
-        //
+        // $data['songs'] = Songs::where('id', $id)->get();
+
+        // return view('admin.songs.form', $this->data);
     }
 
     /**
@@ -61,7 +79,9 @@ class SongsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $this->data['songs'] = Songs::where('id', $id)->first();
+
+        return view('admin.songs.form', $this->data);
     }
 
     /**
@@ -73,7 +93,22 @@ class SongsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title' => 'required|unique:songs|max:255',
+            'artists' => 'required',
+            'genre' => 'required',
+        ]);
+
+        $songs = Songs::where('id', $id)->first();
+        $songs->title = $request->title;
+        $songs->artists = $request->artists;
+        $songs->genre = $request->genre;
+        $songs->likes = 0;
+        $songs->slug = Str::slug($request->title);
+
+        $songs->save();
+
+        return redirect('admin/songs')->with(['success' => 'Lagu berhasil diperbaharui!']);
     }
 
     /**
@@ -84,6 +119,9 @@ class SongsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $songs = Songs::find($id);
+        $songs->delete();
+
+        return redirect('admin/songs')->with(['success' => 'Lagu berhasil dihapus!']);
     }
 }

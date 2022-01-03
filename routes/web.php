@@ -25,6 +25,7 @@ Route::group(
     function () {
         Route::get('dashboard', [IndexController::class, 'index']);
         Route::resource('songs', '\App\Http\Controllers\Admin\SongsController');
+        Route::resource('links', '\App\Http\Controllers\Admin\LinksController');
         // Route::resource('products', '\App\Http\Controllers\Admin\ProductController');
     }
 );
