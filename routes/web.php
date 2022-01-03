@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\IndexController;
+use App\Http\Controllers\Admin\UploadController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,8 +26,12 @@ Route::group(
     function () {
         Route::get('dashboard', [IndexController::class, 'index']);
         Route::resource('songs', '\App\Http\Controllers\Admin\SongsController');
+        Route::resource('articles', '\App\Http\Controllers\Admin\BlogController');
         // Route::resource('products', '\App\Http\Controllers\Admin\ProductController');
     }
 );
+
+Route::delete("/destroy", [UploadController::class, 'delete'])->name("destroy");
+Route::post("/admin/upload/{folder}", [UploadController::class, 'store']);
 
 Route::get('/cms', [App\Http\Controllers\Admin\IndexController::class, 'index'])->name('cms');

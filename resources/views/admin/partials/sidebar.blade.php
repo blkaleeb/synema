@@ -19,7 +19,7 @@
         <div class="" data-simplebar style="height: 100%;">
             <!-- sidebar menu -->
             <ul class="nav sidebar-inner" id="sidebar-menu">
-                <li class="has-sub active expand">
+                {{-- <li class="has-sub active expand">
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
                         data-target="#dashboard" aria-expanded="false" aria-controls="dashboard">
                         <i class="mdi mdi-view-dashboard-outline"></i>
@@ -42,16 +42,23 @@
                             </li>
                         </div>
                     </ul>
-                </li>
+                </li> --}}
 
                 <li class="">
-                    <a class="sidenav-item-link" href="{{ url('songs') }}">
+                    <a class="sidenav-item-link" href="{{ url('admin/songs') }}">
                         <i class="mdi mdi-library-music"></i>
                         <span class="nav-text">Songs</span>
                     </a>
                 </li>
 
-            <li class="section-title">
+                <li class="">
+                    <a class="sidenav-item-link" href="{{ url('admin/songs') }}">
+                        <i class="mdi mdi-library-music"></i>
+                        <span class="nav-text">Blog</span>
+                    </a>
+                </li>
+
+            {{-- <li class="section-title">
               UI Elements
             </li>
 
@@ -539,7 +546,7 @@
                                 </a>
                             </li>
                         </div>
-                    </ul>
+                    </ul> --}}
                 </li>
 
                 <!-- <li class="section-title">
