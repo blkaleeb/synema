@@ -19,6 +19,27 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('home', function () {
+    return view('client.home');
+});
+Route::get('songs', function () {
+    return view('client.songs');
+});
+Route::get('blog', function () {
+    return view('client.blog');
+});
+Route::get('contact', function () {
+    return view('client.contact');
+});
+
+Route::get('blog-item', function () {
+    return view('client.blog-item');
+});
+Route::get('songs-item', function () {
+    return view('client.songs-item');
+});
+
+
 Auth::routes();
 
 Route::group(

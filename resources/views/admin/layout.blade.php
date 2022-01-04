@@ -5,51 +5,34 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description"
-        content="Synema Worship CMS">
-
+    <meta name="description" content="Synema Worship CMS">
     <title>Synema Worships</title>
-
     <!-- GOOGLE FONTS -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500"
-        rel="stylesheet" />
-
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500" rel="stylesheet" />
     <link href="https://cdn.materialdesignicons.com/4.4.95/css/materialdesignicons.min.css" ) }} rel="stylesheet" />
-
     <!-- PLUGINS CSS STYLE -->
     <link href={{ asset("admin/assets/plugins/simplebar/simplebar.css") }} rel="stylesheet" />
     <link href={{ asset("admin/assets/plugins/nprogress/nprogress.css") }} rel="stylesheet" />
-
     <!-- No Extra plugin used -->
     <link href={{ asset('assets/plugins/jvectormap/jquery-jvectormap-2.0.3.css') }} rel='stylesheet'>
     <link href={{ asset('assets/plugins/daterangepicker/daterangepicker.css') }} rel='stylesheet'>
-
     <!-- Summernote -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
     <link href={{ asset('assets/plugins/toastr/toastr.min.css') }} rel='stylesheet'>
-
     <!-- SLEEK CSS -->
     <link id="sleek-css" rel="stylesheet" href={{ asset("admin/assets/css/sleek.css") }} />
-
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
-    
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ asset('admin/plugins/select2/css/select2.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}" />
-    
     <!-- FAVICON -->
-    <link href={{ asset("admin/assets/img/favicon.png") }} rel="shortcut icon" />
-    
+    <link href={{ asset("admin/assets/img/favicon.png") }} rel="shortcut icon" /> 
     <!-- Get FilePond and FilePond image preview plugin styles from a CDN -->
     <link href="https://unpkg.com/filepond/dist/filepond.min.css" rel="stylesheet">
     <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css" rel="stylesheet">
-    
     <!--
         HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
     -->
@@ -58,8 +41,8 @@
         <script src= {{ asset("https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js") }}></script>
         <script src= {{ asset("https://oss.maxcdn.com/respond/1.4.2/respond.min.js") }}></script>
         <![endif]-->
-        <script src={{ asset("admin/assets/plugins/nprogress/nprogress.js") }}></script>
-    </head>
+    <script src={{ asset("admin/assets/plugins/nprogress/nprogress.js") }}></script>
+</head>
 
 <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body">
     <script>
