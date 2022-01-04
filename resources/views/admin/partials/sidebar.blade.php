@@ -27,13 +27,6 @@
                     </a>
                 </li>
                 
-                <li class="">
-                    <a class="sidenav-item-link" href="{{ url('admin/articles') }}">
-                        <i class="mdi mdi-library-music"></i>
-                        <span class="nav-text">Blog</span>
-                    </a>
-                </li>
-                
                 <li class="has-sub active expand">
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
                         data-target="#dashboard" aria-expanded="false" aria-controls="dashboard">
@@ -41,7 +34,7 @@
                         <span class="nav-text">Article</span> <b class="caret"></b>
                     </a>
 
-                    <ul class="collapse show" id="dashboard" data-parent="#sidebar-menu">
+                    <ul class="collapse" id="dashboard" data-parent="#sidebar-menu">
                         <div class="sub-menu">
                             <li class="active">
                                 <a class="sidenav-item-link" href="{{ url('admin/articles') }}">
@@ -57,10 +50,18 @@
                         </div>
                     </ul>
                 </li>
+
                 <li class="">
-                    <a class="sidenav-item-link" href="{{ url('admin/articles') }}">
+                    <a class="sidenav-item-link" href="{{ url('admin/compro') }}">
                         <i class="mdi mdi-library-music"></i>
-                        <span class="nav-text"></span>
+                        <span class="nav-text">Company Profile</span>
+                    </a>
+                </li>
+
+                <li class="">
+                    <a class="sidenav-item-link" href="{{ url('admin/links') }}">
+                        <i class="mdi mdi-library-music"></i>
+                        <span class="nav-text">Links</span>
                     </a>
                 </li>
 

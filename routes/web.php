@@ -29,6 +29,7 @@ Route::group(
         Route::resource('links', '\App\Http\Controllers\Admin\LinksController');
         Route::resource('articles', '\App\Http\Controllers\Admin\BlogController');
         Route::resource('tags', '\App\Http\Controllers\Admin\TagsController');
+        Route::resource('compro', '\App\Http\Controllers\Admin\ComproController');
     }
 );
 
