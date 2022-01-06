@@ -42,6 +42,65 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
+        $createdAt =  Carbon::now()->format('d-m-Y');
+
+        $article = new Article();
+        $article->title = $request->title;
+        $article->subtitle = $request->subtitle;
+        $article->category_id = $request->articleCategory;
+        $article->slug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $request->title)));
+        $article->title = $request->title;
+        $description = $request->description;
+        $dom = new \DomDocument();
+        @$dom->loadHtml('<?xml encoding="utf-8" ?>' . $description);
+        $imageFile = $dom->getElementsByTagName('img');
+
+        foreach ($imageFile as $item => $image) {
+            $data = $image->getAttribute('src');
+
+            list($type, $data) = explode(';', $data);
+            list(, $data)      = explode(',', $data);
+
+            $imgeData = base64_decode($data);
+            $image_name = "/upload/article/" . $createdAt . '_' . $item . '.png';
+            $path = public_path() . $image_name;
+            file_put_contents($path, $imgeData);
+
+            $image->removeAttribute('src');
+            $image->setAttribute('src', $image_name);
+        }
+        $description = $dom->saveHTML();
+        $article->description = $request->description;
+
+        $article->benefits = $request->benefits;
+        $article->conclusion = $request->conclusion;
+
+        $file = $request->input('images');
+        for ($i = 0; $i < count($file); $i++) {
+            $pathRemoveQuote = trim($file[$i], '"');
+            $imagePath = trim(substr($file[$i], strpos($file[$i], "/") + 1), '"');
+            $temporaryFile = TemporaryFile::where('filename', $imagePath)->first();
+            if ($temporaryFile) {
+                if ($i === 0) {
+                    $article->main_image = 'images/' . $pathRemoveQuote;
+                } else if ($i === 1) {
+                    $article->first_image = 'images/' . $pathRemoveQuote;
+                } else if ($i === 2) {
+                    $article->second_image = 'images/' . $pathRemoveQuote;
+                }
+                $temporaryFile->delete();
+            }
+        }
+        $article->save();
+
+        if (isset($request->tags)) {
+            foreach ($request->tags as $tag) {
+                $articleTag = new ArticleTag();
+                $articleTag->article_id = $article->id;
+                $articleTag->tag_id = $tag;
+                $articleTag->save();
+            }
+        }
     }
 
     /**

@@ -41,6 +41,12 @@
                                     <span class="nav-text">Articles</span>
                                 </a>
                             </li>
+                            
+                            <li class="active">
+                                <a class="sidenav-item-link" href="{{ url('admin/article_category') }}">
+                                    <span class="nav-text">Category</span>
+                                </a>
+                            </li>
 
                             <li class="">
                                 <a class="sidenav-item-link" href="{{ url('admin/tags') }}">

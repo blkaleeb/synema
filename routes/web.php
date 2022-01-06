@@ -51,6 +51,7 @@ Route::group(
         Route::resource('articles', '\App\Http\Controllers\Admin\BlogController');
         Route::resource('tags', '\App\Http\Controllers\Admin\TagsController');
         Route::resource('compro', '\App\Http\Controllers\Admin\ComproController');
+        Route::resource('article_category', '\App\Http\Controllers\Admin\ArticleCategoryController');
     }
 );
 

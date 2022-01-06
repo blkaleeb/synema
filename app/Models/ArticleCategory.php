@@ -9,7 +9,7 @@ class ArticleCategory extends Model
 {
     use HasFactory;
 
-    protected $table = 'articles_category';
+    protected $table = 'article_categories';
 
     /**
      * The attributes that are mass assignable.
