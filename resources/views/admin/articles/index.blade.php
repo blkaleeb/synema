@@ -17,6 +17,7 @@
                   <tr>
                     <th>Judul</th>
                     <th>Subtitle</th>
+                    <th>image</th>
                     <th>Deskripsi</th>
                     <th>Views</th>
                     <th>Action</th>
@@ -26,20 +27,18 @@
                   @forelse($articles as $article)
                   <tr>
                     <td width="20%">{{$article->title}}</td>
-                    <td>{{$article->subtitle}}
+                    <td>{{$article->subtitle}}</td>
+                    <td>
+                      <img src="{{ asset('storage/'.$article->image)}}" class="img-fluid mb-2" alt="white sample" style="max-width: 200px;"/>
                     </td>
                     <td>{!! $article->description !!}</td>
                     <td>{{ $article->views }}</td>
                     <td>
-                      <a href="{{ url('cms/article/' . $article->id) }}" class="btn btn-primary"> Lihat </a>
-                    </td>
-                    <td>
-                      <a href="{{ url('cms/article/edit/' . $article->id) }}" class="btn btn-primary"> Edit </a>
-                    </td>
-                    <td>
-                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-delete-{{$article->id}}">
-                        Hapus
-                      </button>
+                      <a href="{{ url('admin/articles/'.$article->id.'/edit') }}" class="btn btn-warning btn-sm">Edit</a>
+                      {!! Form::open(['url' => 'admin/articles/'. $article->id, 'class' => 'delete', 'style' => 'display:inline-block']) !!}
+                      {!! Form::hidden('_method', 'DELETE') !!}
+                      {!! Form::submit('remove', ['class' => 'btn btn-danger btn-sm']) !!}
+                      {!! Form::close() !!}
                     </td>
                   </tr>
                   @empty

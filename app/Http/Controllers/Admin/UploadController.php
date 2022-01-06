@@ -30,7 +30,6 @@ class UploadController extends Controller
 
     public function delete(Request $request)
     {
-
         $imagePath = str_replace('"', '', $request->getContent());
 
         unlink(storage_path('app/public/images/' . $imagePath));

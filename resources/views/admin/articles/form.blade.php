@@ -16,10 +16,10 @@
                 <div class="card-body">
                     @include('admin.partials.flash', ['$errors' => $errors])
                     @if (!empty($song))
-                        {!! Form::model($song, ['url' => ['admin/songs', $song->id], 'method' => 'PUT']) !!}
+                        {!! Form::model($song, ['url' => ['admin/articles', $song->id], 'method' => 'PUT']) !!}
                         {!! Form::hidden('id') !!}
                     @else
-                        {!! Form::open(['url' => 'admin/songs', 'enctype' => 'multipart/form-data']) !!}
+                        {!! Form::open(['url' => 'admin/articles', 'enctype' => 'multipart/form-data']) !!}
                     @endif
                         <div class="form-group">
                             {!! Form::label('image', 'Image') !!}
@@ -36,6 +36,10 @@
                             {!! Form::text('subtitle', null, ['class' => 'form-control', 'placeholder' => 'subtitle']) !!}
                         </div>
                         <div class="form-group">
+                            {!! Form::label('category', 'Category') !!}
+                            {!! Form::select('category', $categories , null, ['class' => 'form-control', 'placeholder' => "-- Set Category --"]) !!}
+                        </div>
+                        <div class="form-group">
                             {!! Form::label('description', 'Description') !!}
                             {!! Form::textarea('description', null, ['class' => 'summernote', 'placeholder' => 'description']) !!}
                         </div>
@@ -45,7 +49,7 @@
                         </div>
                         <div class="form-footer pt-5 border-top">
                             <button type="submit" class="btn btn-primary btn-default">Save</button>
-                            <a href="{{ url('admin/songs') }}" class="btn btn-secondary btn-default">Back</a>
+                            <a href="{{ url('admin/articles') }}" class="btn btn-secondary btn-default">Back</a>
                         </div>
                     {!! Form::close() !!}
                 </div>
@@ -79,7 +83,7 @@
     );
     FilePond.setOptions({
       server: {
-        url: '/admin/upload/articles',
+        process: '/admin/upload/articles',
         revert: '/destroy',
         headers: {
           'X-CSRF-TOKEN': '{{ csrf_token() }}'

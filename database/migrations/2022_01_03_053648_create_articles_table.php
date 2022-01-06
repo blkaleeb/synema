@@ -19,13 +19,9 @@ class CreateArticlesTable extends Migration
             $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id')->references('id')->on('article_categories')->onDelete('set null');
             $table->string('slug')->default('');
-            $table->string('main_image');
-            $table->string('first_image')->nullable();
-            $table->string('second_image')->nullable();
+            $table->string('image');
             $table->text('subtitle');
             $table->text('description');
-            $table->text('benefits')->nullable();
-            $table->text('conclusion');
             $table->bigInteger('views')->default(0);
             $table->timestamps();
         });
