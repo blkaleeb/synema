@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\IndexController;
+use App\Http\Controllers\Admin\SubscribeController;
 use App\Http\Controllers\Admin\UploadController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,18 +17,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('client.home');
 });
 
 Route::get('home', function () {
     return view('client.home');
 });
+
 Route::get('songs', function () {
     return view('client.songs');
 });
+
 Route::get('blog', function () {
     return view('client.blog');
 });
+
 Route::get('contact', function () {
     return view('client.contact');
 });
@@ -35,10 +39,12 @@ Route::get('contact', function () {
 Route::get('blog-item', function () {
     return view('client.blog-item');
 });
+
 Route::get('songs-item', function () {
     return view('client.songs-item');
 });
 
+Route::post('/subscribe', [SubscribeController::class, 'store']);
 
 Auth::routes();
 
@@ -52,6 +58,7 @@ Route::group(
         Route::resource('tags', '\App\Http\Controllers\Admin\TagsController');
         Route::resource('compro', '\App\Http\Controllers\Admin\ComproController');
         Route::resource('article_category', '\App\Http\Controllers\Admin\ArticleCategoryController');
+        Route::resource('email', '\App\Http\Controllers\Admin\SubscribeController');
     }
 );
 

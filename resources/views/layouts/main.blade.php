@@ -46,6 +46,13 @@
   
   <!-- ***** Content ***** -->
   @yield('content')
+  @if(session('success'))
+    <div class="alert alert-success">{{ session ('success') }}</div>
+  @endif
+
+  @if(session('error'))
+      <div class="alert alert-danger">{{ session ('error') }}</div>
+  @endif
   <!-- ***** Content End ***** -->
 
   <!-- ***** Newsletter Area Start ***** -->
@@ -62,8 +69,9 @@
         <!-- Newsletter Form -->
         <div class="col-12 col-lg-6">
           <div class="newsletter-form mb-50">
-            <form action="#" method="post">
-              <input type="email" name="nl-email" class="form-control" placeholder="Your Email">
+            <form action="{{ url('subscribe') }}" method="post">
+              @csrf
+              <input type="email" name="email" class="form-control" placeholder="Your Email">
               <button type="submit" class="btn">Subscribe</button>
             </form>
           </div>
