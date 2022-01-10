@@ -35,7 +35,7 @@
                         </div>
                         <div class="form-group">
                             {!! Form::label('sound', 'Sound') !!}
-                            {!! Form::file('sound', ['class' => 'form-control']) !!}
+                            {!! Form::file('images[0]', ['id' => 'mainImage']) !!}
                         </div>
                         <div class="form-footer pt-5 border-top">
                             <button type="submit" class="btn btn-primary btn-default">Save</button>
@@ -48,3 +48,32 @@
     </div>
 </div>
 @endsection 
+
+@section('javascript')
+<script>
+    // Register plugins
+    FilePond.registerPlugin(
+      FilePondPluginFileValidateSize,
+      FilePondPluginImagePreview,
+    );
+    FilePond.setOptions({
+      server: {
+        process: '/admin/upload/songs',
+        revert: '/destroy',
+        headers: {
+          'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        }
+      }
+    });
+    const inputElement = document.querySelector(`input[id="mainImage"]`);
+    const pond = FilePond.create(inputElement, {
+        forceRevert: true
+    });
+    for (let i = 0; i < 2; i++) {
+    const inputElement = document.querySelector(`input[id="sideImage${i}"]`);
+    const pond = FilePond.create(inputElement, {
+      forceRevert: true
+    });
+  }
+</script>
+@endsection

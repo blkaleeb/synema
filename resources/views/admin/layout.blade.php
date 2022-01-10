@@ -22,6 +22,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href={{ asset('assets/plugins/toastr/toastr.min.css') }} rel='stylesheet'>
+
+    <link href='{{ asset('assets/plugins/data-tables/datatables.bootstrap4.min.css') }}' rel='stylesheet'>
+    <link href='{{ asset('assets/plugins/data-tables/responsive.datatables.min.css') }}' rel='stylesheet'>
     <!-- SLEEK CSS -->
     <link id="sleek-css" rel="stylesheet" href={{ asset("admin/assets/css/sleek.css") }} />
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
@@ -114,9 +117,9 @@
         </script> -->
 
     <!-- Javascript -->
-    <script src={{ asset("admin/assets/plugins/jquery/jquery.min.js") }}></script>
-    <script src={{ asset("admin/assets/plugins/bootstrap/js/bootstrap.bundle.min.js") }}></script>
-    <script src={{ asset("admin/assets/plugins/simplebar/simplebar.min.js") }}></script>
+    <script src={{ asset('assets/plugins/jquery/jquery.min.js') }}></script>
+    <script src={{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}></script>
+    <script src={{ asset('assets/plugins/simplebar/simplebar.min.js') }}></script>
     <script src={{ asset('assets/plugins/charts/Chart.min.js') }}></script>
     <script src={{ asset('assets/js/chart.js') }}></script>
     <script src={{ asset('assets/plugins/jvectormap/jquery-jvectormap-2.0.3.min.js') }}></script>
@@ -126,6 +129,9 @@
     <script src={{ asset('assets/plugins/daterangepicker/daterangepicker.js') }}></script>
     <script src={{ asset('assets/js/date-range.js') }}></script>
     <script src={{ asset('assets/plugins/toastr/toastr.min.js') }}></script>
+    <script src={{ asset('assets/plugins/data-tables/jquery.datatables.min.js') }}></script>
+    <script src={{ asset('assets/plugins/data-tables/datatables.bootstrap4.min.js') }}></script>
+    <script src={{ asset('assets/plugins/data-tables/datatables.responsive.min.js') }}></script>
     <script src={{ asset("admin/assets/js/sleek.js") }}></script>
     <link href="assets/options/optionswitch.css" rel="stylesheet">
     <script src={{ asset("admin/assets/options/optionswitcher.js") }}></script>

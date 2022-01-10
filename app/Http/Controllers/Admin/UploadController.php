@@ -11,19 +11,34 @@ class UploadController extends Controller
 {
     public function store(Request $request, $folder)
     {
-        $createdAt = Carbon::now()->format('d-m-Y');
-        $file = $request->file('images', []);
-        foreach ($file as $data) {
-            $filename = $createdAt . '_' . $data->getClientOriginalName();
-            $data->storeAs('public/images/' . $folder, $filename);
+        if ($folder == 'articles') {
+            $createdAt = Carbon::now()->format('d-m-Y');
+            $file = $request->file('images', []);
+            foreach ($file as $data) {
+                $filename = $createdAt . '_' . $data->getClientOriginalName();
+                $data->storeAs('public/images/' . $folder, $filename);
 
-            TemporaryFile::create([
-                'folder' => $folder,
-                'filename' => $filename
-            ]);
+                TemporaryFile::create([
+                    'folder' => $folder,
+                    'filename' => $filename
+                ]);
+            }
+            $response = str_replace('"', '', $folder . '/' . $createdAt . '_' . $file[0]->getClientOriginalName());
+        } else {
+            $createdAt = Carbon::now()->format('d-m-Y');
+            $file = $request->file('images', []);
+            foreach ($file as $data) {
+                $filename = $createdAt . '_' . $data->getClientOriginalName();
+                $data->storeAs('public/' . $folder, $filename);
+
+                TemporaryFile::create([
+                    'folder' => $folder,
+                    'filename' => $filename
+                ]);
+            }
+            $response = str_replace('"', '', $folder . '/' . $createdAt . '_' . $file[0]->getClientOriginalName());
         }
 
-        $response = str_replace('"', '', $folder . '/' . $createdAt . '_' . $file[0]->getClientOriginalName());
 
         return response()->json($response, 200)->setEncodingOptions(JSON_UNESCAPED_SLASHES);
     }

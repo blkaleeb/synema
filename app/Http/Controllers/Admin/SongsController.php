@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Songs;
+use App\Models\TemporaryFile;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str; 
+use Illuminate\Support\Str;
 
 class SongsController extends Controller
 {
@@ -52,6 +53,23 @@ class SongsController extends Controller
         $songs->genre = $request->genre;
         $songs->likes = 0;
         $songs->slug = Str::slug($request->title);
+        $file = $request->input('images');
+        for ($i = 0; $i < count($file); $i++) {
+            $pathRemoveQuote = trim($file[$i], '"');
+            $imagePath = trim(substr($file[$i], strpos($file[$i], "/") + 1), '"');
+            $temporaryFile = TemporaryFile::where('filename', $imagePath)->first();
+            if ($temporaryFile) {
+                if ($i === 0) {
+                    $songs->song = 'songs/' . $pathRemoveQuote;
+                } else if ($i === 1) {
+                    $songs->song = 'songs/' . $pathRemoveQuote;
+                } else if ($i === 2) {
+                    $songs->song = 'songs/' . $pathRemoveQuote;
+                }
+                $temporaryFile->delete();
+            }
+        }
+
 
         $songs->save();
 
