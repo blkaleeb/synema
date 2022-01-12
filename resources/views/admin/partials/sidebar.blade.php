@@ -26,6 +26,13 @@
                         <span class="nav-text">Songs</span>
                     </a>
                 </li>
+
+                <li class="">
+                    <a class="sidenav-item-link" href="{{ url('admin/banners') }}">
+                        <i class="mdi mdi-camera-burst"></i>
+                        <span class="nav-text">Banner</span>
+                    </a>
+                </li>
                 
                 <li class="has-sub active expand">
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"

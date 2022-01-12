@@ -17,8 +17,12 @@ class CreateBannersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('image');
+            $table->string('title');
+            $table->string('slug');
             $table->string('subtitle')->nullable();
             $table->string('description')->nullable();
+            $table->unsignedBigInteger('songs_id')->nullable();
+            $table->foreign('songs_id')->references('id')->on('songs')->onDelete('set null');
             $table->timestamps();
         });
     }

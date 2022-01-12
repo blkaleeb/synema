@@ -33,7 +33,7 @@
                 <!-- Music Player -->
                 <div class="poca-music-player">
                   <audio preload="auto" controls>
-                    <source src="{{ asset('audio/dummy-audio.mp3') }}">
+                    <source src="{{ asset('storage/songs/10-01-2022_TWICE Heart Shaker MV.mp3')}}">
                   </audio>
                 </div>
                 <!-- Likes, Share & Download -->

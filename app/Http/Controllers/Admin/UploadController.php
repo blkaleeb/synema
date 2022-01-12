@@ -11,7 +11,7 @@ class UploadController extends Controller
 {
     public function store(Request $request, $folder)
     {
-        if ($folder == 'articles') {
+        if ($folder == 'articles' || $folder == 'banner') {
             $createdAt = Carbon::now()->format('d-m-Y');
             $file = $request->file('images', []);
             foreach ($file as $data) {

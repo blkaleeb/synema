@@ -17,6 +17,11 @@ class Banners extends Model
      * @var array
      */
     protected $fillable = [
-        'image', 'description'
+        'image', 'description', 'title', 'subtitle', 'name', 'songs_id', 'slug'
     ];
+
+    public function songs()
+    {
+        return $this->belongsTo("App\Models\Songs");
+    }
 }

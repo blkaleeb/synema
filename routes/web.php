@@ -59,6 +59,7 @@ Route::group(
         Route::resource('compro', '\App\Http\Controllers\Admin\ComproController');
         Route::resource('article_category', '\App\Http\Controllers\Admin\ArticleCategoryController');
         Route::resource('email', '\App\Http\Controllers\Admin\SubscribeController');
+        Route::resource('banners', '\App\Http\Controllers\Admin\BannerController');
     }
 );
 
