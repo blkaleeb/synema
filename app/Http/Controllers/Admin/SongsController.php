@@ -60,11 +60,11 @@ class SongsController extends Controller
             $temporaryFile = TemporaryFile::where('filename', $imagePath)->first();
             if ($temporaryFile) {
                 if ($i === 0) {
-                    $songs->song = 'songs/' . $pathRemoveQuote;
+                    $songs->song = $pathRemoveQuote;
                 } else if ($i === 1) {
-                    $songs->song = 'songs/' . $pathRemoveQuote;
+                    $songs->song = $pathRemoveQuote;
                 } else if ($i === 2) {
-                    $songs->song = 'songs/' . $pathRemoveQuote;
+                    $songs->song = $pathRemoveQuote;
                 }
                 $temporaryFile->delete();
             }
