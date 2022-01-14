@@ -34,17 +34,17 @@
         @foreach ($articles as $article)
         <!-- Single Blog Area -->
         <div class="single-blog-area mt-50 mb-50">
-          <a href="#" class="mb-30"><img src="{{ asset('storage/'.$article->image) }}" alt=""></a>
+          <a href="{{ url('blog-item/'.$article->id)}}" class="mb-30"><img src="{{ asset('storage/'.$article->image) }}" alt=""></a>
           <!-- Content -->
           <div class="post-content">
-            <a href="#" class="post-date">{{ $article->created_at }}</a>
-            <a href="#" class="post-title">{{ $article->title }}</a>
+            <a href="{{ url('blog-item/'.$article->id)}}" class="post-date">{{ $article->created_at }}</a>
+            <a href="{{ url('blog-item/'.$article->id)}}" class="post-title">{{ $article->title }}</a>
             <div class="post-meta mb-15">
-              <a href="#" class="post-author">By Admin</a> |
-              <a href="#" class="post-catagory">{{ $article->category->name }}</a>
+              <a href="{{ url('blog-item/'.$article->id)}}" class="post-author">By Admin</a> |
+              <a href="{{ url('blog-item/'.$article->id)}}" class="post-catagory">{{ $article->category->name }}</a>
             </div>
             <p>{{ $article->subtitle }}</p>
-            <a href="#" class="read-more-btn">Continue reading <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            <a href="{{ url('blog-item/'.$article->id)}}" class="read-more-btn">Continue reading <i class="fa fa-angle-right" aria-hidden="true"></i></a>
           </div>
         </div>
         @endforeach

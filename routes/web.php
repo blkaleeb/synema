@@ -24,6 +24,7 @@ Route::get('home', [PageController::class, 'home']);
 Route::get('songs', [PageController::class, 'song']);
 
 Route::get('blog', [PageController::class, 'blog']);
+Route::get('blog-item/{id}', [PageController::class, 'blogShow']);
 
 Route::get('contact', function () {
     return view('client.contact');

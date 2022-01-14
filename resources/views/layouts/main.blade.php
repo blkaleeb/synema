@@ -21,7 +21,7 @@
     @if ($activePage == 'songs-item')
         {{ $songs->name }} | Synema
     @elseif ($activePage == 'blog-item')
-        {{ $articles->title }} | Synema
+        {{ $article->title }} | Synema
     @else
         {{ $activePage }} | Synema
     @endif

@@ -33,6 +33,17 @@ class PageController extends Controller
         return view('client.blog', $this->data);
     }
 
+    public function blogShow($id)
+    {
+        $this->data['article'] = Article::where('id', $id)->first();
+        $this->data['newArticles'] = Article::orderBy('created_at', 'DESC')->get();
+        $this->data['articleCategories'] = ArticleCategory::orderBy('id', 'ASC')->get();
+        $articleTag = Tags::all();
+        $this->data['tags'] = $articleTag;
+
+        return view('client.blog-item', $this->data);
+    }
+
     public function song()
     {
         $this->data['newSongs'] = Songs::latest()->first();

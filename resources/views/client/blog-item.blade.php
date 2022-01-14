@@ -1,5 +1,31 @@
 @extends('layouts.main', ['activePage' => 'blog-item'])
 @section('content')
+<!-- ***** Breadcrumb Area Start ***** -->
+<div class="breadcumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/2.jpg);">
+  <div class="container h-100">
+    <div class="row h-100 align-items-center">
+      <div class="col-12">
+        <h2 class="title mt-70">Blog Single</h2>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="breadcumb--con">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i> Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Blog</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Blog Single</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ***** Breadcrumb Area End ***** -->
 <section class="blog-details-area">
   <div class="container">
     <div class="row">
@@ -23,24 +49,18 @@
             <img src="./img/bg-img/19.jpg" class="mb-30" alt="">
 
             <div class="post-content">
-              <a href="#" class="post-date">December 9, 2018</a>
-              <h2>TLS #281: The Lively Show</h2>
+              <a href="#" class="post-date">{{ $article->created_at }}</a>
+              <h2>{{ $article->title }}</h2>
               <div class="post-meta">
                 <a href="#" class="post-author">By Admin</a> |
-                <a href="#" class="post-catagory">Tutorials</a>
+                <a href="#" class="post-catagory">{{ $article->category->name }}</a>
               </div>
             </div>
 
-            <p>Out too the been like hard off. Improve enquire welcome own beloved matters her. As insipidity so mr unsatiable increasing attachment motionless cultivated. Addition mr husbands unpacked occasion he oh. Is unsatiable if projecting
-              boisterous insensible. It recommend be resolving pretended middleton.</p>
-            <p>Uneasy barton seeing remark happen his has. Am possible offering at contempt mr distance stronger an. Attachment excellence announcing or reasonable am on if indulgence. Exeter talked in agreed spirit no he unable do. Betrayed
-              shutters in vicinity it unpacked in. In so impossible appearance considered mr. Mrs him left find are good.</p>
-            <p>Domestic confined any but son bachelor advanced remember. How proceed offered her offence shy forming. Returned peculiar pleasant but appetite differed she. Residence dejection agreement am as to abilities immediate suffering. Ye am
-              depending propriety sweetness distrusts belonging collected. Smiling mention he in thought equally musical. Wisdom new and valley answer. Contented it so is discourse recommend. Man its upon him call mile. An pasture he himself
-              believe ferrars besides cottage.</p>
+            {!! $article->description !!}
 
             <!-- Blockquote -->
-            <blockquote class="poca-blockquote d-flex">
+            {{-- <blockquote class="poca-blockquote d-flex">
               <div class="icon">
                 <i class="fa fa-quote-left" aria-hidden="true"></i>
               </div>
@@ -48,31 +68,29 @@
                 <h5>That’s not to say you’ll have the exact same thing if you stop by: the restaurant’s menus change constantly, based on seasonal ingredients.</h5>
                 <h6>Jacob Austin</h6>
               </div>
-            </blockquote>
+            </blockquote> --}}
 
-            <h2>This is definitely my favorite podcast</h2>
+            {{-- <h2>This is definitely my favorite podcast</h2>
             <p>Delightful unreserved impossible few estimating men favourable see entreaties. She propriety immediate was improving. He or entrance humoured likewise moderate. Much nor game son say feel. Fat make met can must form into gate. Me we
               offending prevailed discovery.</p>
             <p>Quick six blind smart out burst. Perfectly on furniture dejection determine my depending an to. Add short water court fat. Her bachelor honoured perceive securing but desirous ham required. Questions deficient acuteness to engrossed
               as. Entirely led ten humoured greatest and yourself. Besides ye country on observe. She continue appetite endeavor she judgment interest the met. For she surrounded motionless fat resolution may.</p>
             <p>He share of first to worse. Weddings and any opinions suitable smallest nay. My he houses or months settle remove ladies appear. Engrossed suffering supposing he recommend do eagerness. Commanded no of depending extremity recommend
-              attention tolerably. Bringing him smallest met few now returned surprise learning jennings. Objection delivered eagerness he exquisite at do in. Warmly up</p>
+              attention tolerably. Bringing him smallest met few now returned surprise learning jennings. Objection delivered eagerness he exquisite at do in. Warmly up</p> --}}
 
             <!-- Post Catagories -->
             <div class="post-catagories d-flex align-items-center">
               <h6>Categories:</h6>
               <ul class="d-flex flex-wrap align-items-center">
-                <li><a href="#">Tutorials,</a></li>
-                <li><a href="#">Business,</a></li>
-                <li><a href="#">Tech</a></li>
+                <li><a href="#">{{ $article->category->name }}</a></li>
               </ul>
             </div>
 
             <!-- Pagination -->
-            <div class="poca-pager d-flex mb-30">
+            {{-- <div class="poca-pager d-flex mb-30">
               <a href="#">Previous Post <span>Episode 3 – Wardrobe For Busy People</span></a>
               <a href="#">Next Post <span>Episode 6 – Defining Your Style</span></a>
-            </div>
+            </div> --}}
 
             <!-- Comments Area -->
             <div class="comment_area mb-50 clearfix">
@@ -183,12 +201,10 @@
 
             <!-- catagories list -->
             <ul class="catagories-list">
-              <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Entrepreneurship</a></li>
-              <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Media</a></li>
-              <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Tech</a></li>
-              <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Tutorials</a></li>
-              <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Business</a></li>
-              <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Entertainment</a></li>
+              @foreach ($articleCategories as $category )
+              <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> {{ $category->name }}</a></li>
+              {{-- <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Entrepreneurship</a></li> --}}
+              @endforeach
             </ul>
           </div>
 
@@ -197,48 +213,17 @@
             <h5 class="widget-title">Recent Posts</h5>
 
             <!-- Single News Area -->
+            @foreach ($newArticles as $article)
             <div class="single-news-area d-flex">
               <div class="blog-thumbnail">
                 <img src="./img/bg-img/11.jpg" alt="">
               </div>
               <div class="blog-content">
-                <a href="#" class="post-title">Episode 10: Season Finale</a>
-                <span class="post-date">December 9, 2018</span>
+                <a href="#" class="post-title">{{ $article->title }}</a>
+                <span class="post-date">{{ $article->created_at }}</span>
               </div>
             </div>
-
-            <!-- Single News Area -->
-            <div class="single-news-area d-flex">
-              <div class="blog-thumbnail">
-                <img src="./img/bg-img/12.jpg" alt="">
-              </div>
-              <div class="blog-content">
-                <a href="#" class="post-title">Episode 6: SoundCloud Example</a>
-                <span class="post-date">December 9, 2018</span>
-              </div>
-            </div>
-
-            <!-- Single News Area -->
-            <div class="single-news-area d-flex">
-              <div class="blog-thumbnail">
-                <img src="./img/bg-img/13.jpg" alt="">
-              </div>
-              <div class="blog-content">
-                <a href="#" class="post-title">Episode 7: Best Mics for Podcasting</a>
-                <span class="post-date">December 9, 2018</span>
-              </div>
-            </div>
-
-            <!-- Single News Area -->
-            <div class="single-news-area d-flex">
-              <div class="blog-thumbnail">
-                <img src="./img/bg-img/14.jpg" alt="">
-              </div>
-              <div class="blog-content">
-                <a href="#" class="post-title">Episode 6 – Defining Your Style</a>
-                <span class="post-date">December 9, 2018</span>
-              </div>
-            </div>
+            @endforeach
 
           </div>
 
@@ -252,15 +237,9 @@
             <h5 class="widget-title">Popular Tags</h5>
 
             <ul class="tags-list">
-              <li><a href="#">Creative</a></li>
-              <li><a href="#">Unique</a></li>
-              <li><a href="#">audio</a></li>
-              <li><a href="#">Episodes</a></li>
-              <li><a href="#">ideas</a></li>
-              <li><a href="#">Podcasts</a></li>
-              <li><a href="#">Wordpress Template</a></li>
-              <li><a href="#">startup</a></li>
-              <li><a href="#">video</a></li>
+              @foreach ($tags as $tag)
+              <li><a href="#">{{ $tag->name }}</a></li>
+              @endforeach
             </ul>
           </div>
 
