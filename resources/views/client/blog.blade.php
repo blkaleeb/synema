@@ -31,21 +31,23 @@
     <div class="row">
       <div class="col-12 col-lg-8">
 
+        @foreach ($articles as $article)
         <!-- Single Blog Area -->
         <div class="single-blog-area mt-50 mb-50">
-          <a href="#" class="mb-30"><img src="./img/bg-img/21.jpg" alt=""></a>
+          <a href="#" class="mb-30"><img src="{{ asset('storage/'.$article->image) }}" alt=""></a>
           <!-- Content -->
           <div class="post-content">
-            <a href="#" class="post-date">December 9, 2018</a>
-            <a href="#" class="post-title">TLS #281: The Lively Show</a>
+            <a href="#" class="post-date">{{ $article->created_at }}</a>
+            <a href="#" class="post-title">{{ $article->title }}</a>
             <div class="post-meta mb-15">
               <a href="#" class="post-author">By Admin</a> |
-              <a href="#" class="post-catagory">Tutorials</a>
+              <a href="#" class="post-catagory">{{ $article->category->name }}</a>
             </div>
-            <p>Vestibulum lacus erat, pharetra et sodales ut, porta sit amet nibh. Sed vestibulum lacinia quam, vel iaculis nunc condimentum eget. Aliquam in mi pharetra, molestie augue ac, fermentum orci.</p>
+            <p>{{ $article->subtitle }}</p>
             <a href="#" class="read-more-btn">Continue reading <i class="fa fa-angle-right" aria-hidden="true"></i></a>
           </div>
         </div>
+        @endforeach
 
         <!-- Single Blog Area -->
         <div class="single-blog-area mb-50">
@@ -120,12 +122,10 @@
 
             <!-- catagories list -->
             <ul class="catagories-list">
-              <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Entrepreneurship</a></li>
-              <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Media</a></li>
-              <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Tech</a></li>
-              <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Tutorials</a></li>
-              <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Business</a></li>
-              <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Entertainment</a></li>
+              @foreach ($articleCategories as $category )
+              <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> {{ $category->name }}</a></li>
+              {{-- <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Entrepreneurship</a></li> --}}
+              @endforeach
             </ul>
           </div>
 
@@ -134,48 +134,17 @@
             <h5 class="widget-title">Recent Posts</h5>
 
             <!-- Single News Area -->
+            @foreach ($newArticles as $article)
             <div class="single-news-area d-flex">
               <div class="blog-thumbnail">
                 <img src="./img/bg-img/11.jpg" alt="">
               </div>
               <div class="blog-content">
-                <a href="#" class="post-title">Episode 10: Season Finale</a>
-                <span class="post-date">December 9, 2018</span>
+                <a href="#" class="post-title">{{ $article->title }}</a>
+                <span class="post-date">{{ $article->created_at }}</span>
               </div>
             </div>
-
-            <!-- Single News Area -->
-            <div class="single-news-area d-flex">
-              <div class="blog-thumbnail">
-                <img src="./img/bg-img/12.jpg" alt="">
-              </div>
-              <div class="blog-content">
-                <a href="#" class="post-title">Episode 6: SoundCloud Example</a>
-                <span class="post-date">December 9, 2018</span>
-              </div>
-            </div>
-
-            <!-- Single News Area -->
-            <div class="single-news-area d-flex">
-              <div class="blog-thumbnail">
-                <img src="./img/bg-img/13.jpg" alt="">
-              </div>
-              <div class="blog-content">
-                <a href="#" class="post-title">Episode 7: Best Mics for Podcasting</a>
-                <span class="post-date">December 9, 2018</span>
-              </div>
-            </div>
-
-            <!-- Single News Area -->
-            <div class="single-news-area d-flex">
-              <div class="blog-thumbnail">
-                <img src="./img/bg-img/14.jpg" alt="">
-              </div>
-              <div class="blog-content">
-                <a href="#" class="post-title">Episode 6 – Defining Your Style</a>
-                <span class="post-date">December 9, 2018</span>
-              </div>
-            </div>
+            @endforeach
 
           </div>
 
@@ -189,15 +158,9 @@
             <h5 class="widget-title">Popular Tags</h5>
 
             <ul class="tags-list">
-              <li><a href="#">Creative</a></li>
-              <li><a href="#">Unique</a></li>
-              <li><a href="#">audio</a></li>
-              <li><a href="#">Episodes</a></li>
-              <li><a href="#">ideas</a></li>
-              <li><a href="#">Podcasts</a></li>
-              <li><a href="#">Wordpress Template</a></li>
-              <li><a href="#">startup</a></li>
-              <li><a href="#">video</a></li>
+              @foreach ($tags as $tag)
+              <li><a href="#">{{ $tag->name }}</a></li>
+              @endforeach
             </ul>
           </div>
 

@@ -19,17 +19,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'home']);
 
-Route::get('home', function () {
-    return view('client.home');
-});
+Route::get('home', [PageController::class, 'home']);
 
-Route::get('songs', function () {
-    return view('client.songs');
-});
+Route::get('songs', [PageController::class, 'song']);
 
-Route::get('blog', function () {
-    return view('client.blog');
-});
+Route::get('blog', [PageController::class, 'blog']);
 
 Route::get('contact', function () {
     return view('client.contact');
