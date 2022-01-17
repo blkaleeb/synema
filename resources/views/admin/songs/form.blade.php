@@ -34,6 +34,10 @@
                             {!! Form::text('genre', null, ['class' => 'form-control', 'placeholder' => 'genre']) !!}
                         </div>
                         <div class="form-group">
+                            {!! Form::label('description', 'Description') !!}
+                            {!! Form::textarea('description', null, ['class' => 'summernote', 'placeholder' => 'description']) !!}
+                        </div>
+                        <div class="form-group">
                             {!! Form::label('sound', 'Sound') !!}
                             {!! Form::file('images[0]', ['id' => 'mainImage']) !!}
                         </div>
@@ -50,6 +54,14 @@
 @endsection 
 
 @section('javascript')
+<script>
+    $('.summernote').summernote({
+        placeholder: 'Write your article here...',
+        tabsize: 2,
+        height: 100
+    });
+    $('.dropdown-toggle').dropdown();
+</script>
 <script>
     // Register plugins
     FilePond.registerPlugin(

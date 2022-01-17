@@ -25,7 +25,7 @@
           <div class="classynav">
             <ul id="nav">
               <li class="{{ $activePage == 'Home' ? 'current-item' : '' }}"><a href="{{ url('home') }}">Home</a></li>
-              <li><a href="#">Pages</a>
+              {{-- <li><a href="#">Pages</a>
                 <ul class="dropdown">
                   <li><a href="{{ url('home') }}">- Home</a></li>
                   <li><a href="{{ url('songs') }}">- Songs</a></li>
@@ -49,7 +49,7 @@
                     </ul>
                   </li>
                 </ul>
-              </li>
+              </li> --}}
               <li class="{{ $activePage == 'Songs' ? 'current-item' : '' }}"><a href="{{ url('songs') }}">Songs</a></li>
               <li class="{{ $activePage == 'Blog' ? 'current-item' : '' }}"><a href="{{ url('blog') }}">Blog</a></li>
               <li class="{{ $activePage == 'About' ? 'current-item' : '' }}"><a href="./about.html">About</a></li>

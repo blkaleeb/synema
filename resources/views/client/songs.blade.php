@@ -99,7 +99,7 @@
           <!-- Welcome Music Area -->
           <div class="poca-music-area style-2 d-flex align-items-center flex-wrap">
             <div class="poca-music-thumbnail">
-              <img src="./img/bg-img/5.jpg" alt="">
+              <a href="{{ url('song-item/'.$song->id)}}"><img src="./img/bg-img/5.jpg" alt=""></a>
             </div>
             <div class="poca-music-content text-center">
               <span class="music-published-date mb-2">{{ $song->created_at }}</span>

@@ -1,5 +1,53 @@
 @extends('layouts.main', ['activePage' => 'songs-item'])
 @section('content')
+<div class="breadcumb-area single-podcast-breadcumb bg-img bg-overlay" style="background-image: url(img/bg-img/2.jpg);">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-8">
+        <!-- Music Area -->
+        <div class="poca-music-area style-2 bg-transparent mb-0">
+          <div class="poca-music-content text-center">
+            <span class="music-published-date mb-2">{{ $songs->created_at }}</span>
+            <h2 class="text-white">{{ $songs->title }}</h2>
+            <div class="music-meta-data">
+              <p class="text-white">By <a href="#" class="music-author text-white">{{ $songs->artists }}</a> | <a href="#" class="music-catagory  text-white">{{ $songs->genre }}</a></p>
+            </div>
+            <!-- Music Player -->
+            <div class="poca-music-player style-2">
+              <audio preload="auto" controls>
+                <source src="{{ asset('storage/'.$songs->song) }}">
+              </audio>
+            </div>
+            <!-- Likes, Share & Download -->
+            {{-- <div class="likes-share-download d-flex align-items-center justify-content-between">
+              <a href="#"><i class="fa fa-heart" aria-hidden="true"></i> Like (29)</a>
+              <div>
+                <a href="#" class="mr-4"><i class="fa fa-share-alt" aria-hidden="true"></i> Share(04)</a>
+                <a href="#"><i class="fa fa-download" aria-hidden="true"></i> Download (12)</a>
+              </div>
+            </div> --}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="breadcumb--con">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i> Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Podcast</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Single</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
 <section class="podcast-details-area">
   <div class="container">
     <div class="row">
@@ -20,15 +68,9 @@
 
           <!-- Post Details Text -->
           <div class="post-details-text">
-            <p>Out too the been like hard off. Improve enquire welcome own beloved matters her. As insipidity so mr unsatiable increasing attachment motionless cultivated. Addition mr husbands unpacked occasion he oh. Is unsatiable if projecting
-              boisterous insensible. It recommend be resolving pretended middleton.</p>
-            <p>Uneasy barton seeing remark happen his has. Am possible offering at contempt mr distance stronger an. Attachment excellence announcing or reasonable am on if indulgence. Exeter talked in agreed spirit no he unable do. Betrayed
-              shutters in vicinity it unpacked in. In so impossible appearance considered mr. Mrs him left find are good.</p>
-            <p>Domestic confined any but son bachelor advanced remember. How proceed offered her offence shy forming. Returned peculiar pleasant but appetite differed she. Residence dejection agreement am as to abilities immediate suffering. Ye am
-              depending propriety sweetness distrusts belonging collected. Smiling mention he in thought equally musical. Wisdom new and valley answer. Contented it so is discourse recommend. Man its upon him call mile. An pasture he himself
-              believe ferrars besides cottage.</p>
+            {!! $songs->description !!}
 
-            <!-- Blockquote -->
+            {{-- <!-- Blockquote -->
             <blockquote class="poca-blockquote d-flex">
               <div class="icon">
                 <i class="fa fa-quote-left" aria-hidden="true"></i>
@@ -37,31 +79,21 @@
                 <h5>“Poca has made podcasting a breeze! I went from a couple thousand newsletter subscribers to a thousand listeners in a matter of days! Thank you Poca!”</h5>
                 <h6>Jacob Austin</h6>
               </div>
-            </blockquote>
-
-            <h2>Episode 9: Building an Audience</h2>
-            <p>Delightful unreserved impossible few estimating men favourable see entreaties. She propriety immediate was improving. He or entrance humoured likewise moderate. Much nor game son say feel. Fat make met can must form into gate. Me we
-              offending prevailed discovery.</p>
-            <p>Quick six blind smart out burst. Perfectly on furniture dejection determine my depending an to. Add short water court fat. Her bachelor honoured perceive securing but desirous ham required. Questions deficient acuteness to engrossed
-              as. Entirely led ten humoured greatest and yourself. Besides ye country on observe. She continue appetite endeavor she judgment interest the met. For she surrounded motionless fat resolution may.</p>
-            <p>He share of first to worse. Weddings and any opinions suitable smallest nay. My he houses or months settle remove ladies appear. Engrossed suffering supposing he recommend do eagerness. Commanded no of depending extremity recommend
-              attention tolerably. Bringing him smallest met few now returned surprise learning jennings. Objection delivered eagerness he exquisite at do in. Warmly up</p>
+            </blockquote> --}}
 
             <!-- Post Catagories -->
             <div class="post-catagories d-flex align-items-center">
-              <h6>Categories:</h6>
+              <h6>Genre:</h6>
               <ul class="d-flex flex-wrap align-items-center">
-                <li><a href="#">Tutorials,</a></li>
-                <li><a href="#">Business,</a></li>
-                <li><a href="#">Tech</a></li>
+                <li><a href="#">{{ $songs->genre }}</a></li>
               </ul>
             </div>
 
             <!-- Pagination -->
-            <div class="poca-pager d-flex mb-30">
+            {{-- <div class="poca-pager d-flex mb-30">
               <a href="#">Previous Post <span>Episode 3 – Wardrobe For Busy People</span></a>
               <a href="#">Next Post <span>Episode 6 – Defining Your Style</span></a>
-            </div>
+            </div> --}}
 
             <!-- Comments Area -->
             <div class="comment_area mb-50 clearfix">
@@ -168,7 +200,7 @@
 
           <!-- Single Widget Area -->
           <div class="single-widget-area catagories-widget mb-80">
-            <h5 class="widget-title">Categories</h5>
+            <h5 class="widget-title">Genre</h5>
 
             <!-- catagories list -->
             <ul class="catagories-list">
@@ -183,74 +215,20 @@
 
           <!-- Single Widget Area -->
           <div class="single-widget-area news-widget mb-80">
-            <h5 class="widget-title">Recent Posts</h5>
-
+            <h5 class="widget-title">Recent Songs</h5>
+            @foreach ($allSongs as $song )
             <!-- Single News Area -->
             <div class="single-news-area d-flex">
               <div class="blog-thumbnail">
                 <img src="./img/bg-img/11.jpg" alt="">
               </div>
               <div class="blog-content">
-                <a href="#" class="post-title">Episode 10: Season Finale</a>
-                <span class="post-date">December 9, 2018</span>
+                <a href="#" class="post-title">{{ $song->title }}</a>
+                <span class="post-date">{{ $song->created_at }}</span>
               </div>
             </div>
+            @endforeach
 
-            <!-- Single News Area -->
-            <div class="single-news-area d-flex">
-              <div class="blog-thumbnail">
-                <img src="./img/bg-img/12.jpg" alt="">
-              </div>
-              <div class="blog-content">
-                <a href="#" class="post-title">Episode 6: SoundCloud Example</a>
-                <span class="post-date">December 9, 2018</span>
-              </div>
-            </div>
-
-            <!-- Single News Area -->
-            <div class="single-news-area d-flex">
-              <div class="blog-thumbnail">
-                <img src="./img/bg-img/13.jpg" alt="">
-              </div>
-              <div class="blog-content">
-                <a href="#" class="post-title">Episode 7: Best Mics for Podcasting</a>
-                <span class="post-date">December 9, 2018</span>
-              </div>
-            </div>
-
-            <!-- Single News Area -->
-            <div class="single-news-area d-flex">
-              <div class="blog-thumbnail">
-                <img src="./img/bg-img/14.jpg" alt="">
-              </div>
-              <div class="blog-content">
-                <a href="#" class="post-title">Episode 6 – Defining Your Style</a>
-                <span class="post-date">December 9, 2018</span>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- Single Widget Area -->
-          <div class="single-widget-area adds-widget mb-80">
-            <a href="#"><img class="w-100" src="./img/bg-img/banner.png" alt=""></a>
-          </div>
-
-          <!-- Single Widget Area -->
-          <div class="single-widget-area tags-widget mb-80">
-            <h5 class="widget-title">Popular Tags</h5>
-
-            <ul class="tags-list">
-              <li><a href="#">Creative</a></li>
-              <li><a href="#">Unique</a></li>
-              <li><a href="#">audio</a></li>
-              <li><a href="#">Episodes</a></li>
-              <li><a href="#">ideas</a></li>
-              <li><a href="#">Podcasts</a></li>
-              <li><a href="#">Wordpress Template</a></li>
-              <li><a href="#">startup</a></li>
-              <li><a href="#">video</a></li>
-            </ul>
           </div>
 
         </div>

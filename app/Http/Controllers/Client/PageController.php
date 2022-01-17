@@ -51,4 +51,16 @@ class PageController extends Controller
 
         return view('client.songs', $this->data);
     }
+
+    public function songShow($id)
+    {
+        $this->data['songs'] = Songs::where('id', $id)->first();
+        $this->data['newSongs'] = Songs::orderBy('created_at', 'DESC')->get();
+
+        $this->data['allSongs'] = Songs::all();
+
+        // dd($this->data['allSongs']);
+
+        return view('client.songs-item', $this->data);
+    }
 }

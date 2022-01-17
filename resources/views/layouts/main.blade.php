@@ -19,7 +19,7 @@
   <!-- Title -->
   <title>
     @if ($activePage == 'songs-item')
-        {{ $songs->name }} | Synema
+        {{ $songs->title }} | Synema
     @elseif ($activePage == 'blog-item')
         {{ $article->title }} | Synema
     @else
