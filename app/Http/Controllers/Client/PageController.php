@@ -20,13 +20,24 @@ class PageController extends Controller
         return view('client.home', $this->data);
     }
 
-    public function blog()
+    public function blog(Request $request)
     {
         $this->data['articles'] = Article::latest()->with('category')->get();
         $this->data['newArticles'] = Article::orderBy('created_at', 'DESC')->get();
         $this->data['articleCategories'] = ArticleCategory::orderBy('id', 'ASC')->get();
         $articleTag = Tags::all();
         $this->data['tags'] = $articleTag;
+
+        $article = Article::latest()->with("category");
+
+        if ($request->has("search")) {
+            $searchValues = $article->where(
+                "title",
+                "like",
+                "%" . $request->search . "%"
+            );
+            $this->data['articles'] = $searchValues->get();
+        }
 
         // dd($this->data['articleCategories']);
 

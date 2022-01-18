@@ -30,7 +30,11 @@
   <div class="container">
     <div class="row">
       <div class="col-12 col-lg-8">
-
+        @if($articles->isEmpty()) 
+          <div class="single-blog-area mt-50 mb-50">
+            <br><br> <div class="post-title"> Sorry, we cannot find what you are looking for. </div>
+          </div>
+        @else
         @foreach ($articles as $article)
         <!-- Single Blog Area -->
         <div class="single-blog-area mt-50 mb-50">
@@ -48,61 +52,7 @@
           </div>
         </div>
         @endforeach
-
-        <!-- Single Blog Area -->
-        <div class="single-blog-area mb-50">
-          <a href="#" class="mb-30"><img src="./img/bg-img/22.jpg" alt=""></a>
-          <!-- Content -->
-          <div class="post-content">
-            <a href="#" class="post-date">December 9, 2018</a>
-            <a href="#" class="post-title">TLS #275: Your Alignment Questions</a>
-            <div class="post-meta mb-15">
-              <a href="#" class="post-author">By Admin</a> |
-              <a href="#" class="post-catagory">Tutorials</a>
-            </div>
-            <p>Vestibulum lacus erat, pharetra et sodales ut, porta sit amet nibh. Sed vestibulum lacinia quam, vel iaculis nunc condimentum eget. Aliquam in mi pharetra, molestie augue ac, fermentum orci.</p>
-            <a href="#" class="read-more-btn">Continue reading <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-          </div>
-        </div>
-
-        <!-- Single Blog Area -->
-        <div class="single-blog-area mb-50">
-          <a href="#" class="mb-30"><img src="./img/bg-img/23.jpg" alt=""></a>
-          <!-- Content -->
-          <div class="post-content">
-            <a href="#" class="post-date">December 9, 2018</a>
-            <a href="#" class="post-title">TLS #281: The Entrepreneur On Fire</a>
-            <div class="post-meta mb-15">
-              <a href="#" class="post-author">By Admin</a> |
-              <a href="#" class="post-catagory">Tutorials</a>
-            </div>
-            <p>Vestibulum lacus erat, pharetra et sodales ut, porta sit amet nibh. Sed vestibulum lacinia quam, vel iaculis nunc condimentum eget. Aliquam in mi pharetra, molestie augue ac, fermentum orci.</p>
-            <a href="#" class="read-more-btn">Continue reading <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-          </div>
-        </div>
-
-        <!-- Single Blog Area -->
-        <div class="single-blog-area mb-50">
-          <a href="#" class="mb-30"><img src="./img/bg-img/24.jpg" alt=""></a>
-          <!-- Content -->
-          <div class="post-content">
-            <a href="#" class="post-date">December 9, 2018</a>
-            <a href="#" class="post-title">TLS #281: The Lively Show</a>
-            <div class="post-meta mb-15">
-              <a href="#" class="post-author">By Admin</a> |
-              <a href="#" class="post-catagory">Tutorials</a>
-            </div>
-            <p>Vestibulum lacus erat, pharetra et sodales ut, porta sit amet nibh. Sed vestibulum lacinia quam, vel iaculis nunc condimentum eget. Aliquam in mi pharetra, molestie augue ac, fermentum orci.</p>
-            <a href="#" class="read-more-btn">Continue reading <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-          </div>
-        </div>
-
-        <!-- Pagination -->
-        <div class="poca-pager d-flex mb-80">
-          <a href="#">Previous Post <span>Episode 3 – Wardrobe For Busy People</span></a>
-          <a href="#">Next Post <span>Episode 6 – Defining Your Style</span></a>
-        </div>
-
+        @endif
       </div>
 
       <div class="col-12 col-lg-4">
@@ -110,8 +60,9 @@
 
           <!-- Single Widget Area -->
           <div class="single-widget-area search-widget-area mb-80">
-            <form action="#" method="post">
-              <input type="search" name="search" class="form-control" placeholder="Search ...">
+            <form>
+              <input type="search" name="search" class="form-control" placeholder="Search ..." value="{{ request('search')}}">
+              <a onclick="onArticleSearch()" class="tt-btn-icon icon-search"></a>
               <button type="submit"><i class="fa fa-search"></i></button>
             </form>
           </div>
@@ -170,4 +121,16 @@
   </div>
 </section>
 <!-- ***** Blog Area End ***** -->
+@endsection
+
+@section('javascript')
+<script type="text/javascript">
+	const onArticleSearch = () => {
+		const search = document.getElementById("search").value || '';
+		const urlSearchParams = new URLSearchParams(window.location.search);
+		urlSearchParams.set('search', search)
+
+		window.location = `{{ url('blog?${urlSearchParams}')}}`;
+	}
+</script>
 @endsection

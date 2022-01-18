@@ -9,7 +9,7 @@ class ArticleTag extends Model
 {
     use HasFactory;
 
-    protected $table = 'article_tag';
+    protected $table = 'article_tags';
 
     /**
      * The attributes that are mass assignable.

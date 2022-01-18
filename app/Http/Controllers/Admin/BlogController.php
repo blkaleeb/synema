@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use App\Models\ArticleCategory;
+use App\Models\ArticleTag;
 use App\Models\Tags;
 use App\Models\TemporaryFile;
 use Carbon\Carbon;
@@ -31,7 +33,7 @@ class BlogController extends Controller
     public function create()
     {
         $this->data['tags'] = Tags::pluck('name', 'id');
-        $this->data['categories'] = Tags::pluck('name', 'id');
+        $this->data['categories'] = ArticleCategory::pluck('name', 'id');
 
         return view('admin.articles.form', $this->data);
     }
@@ -46,6 +48,8 @@ class BlogController extends Controller
     {
         // dd($request);
         $createdAt =  Carbon::now()->format('d-m-Y');
+
+        // dd($request);
 
         $article = new Article();
         $article->title = $request->title;
@@ -94,7 +98,12 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        //
+        $this->data['articles'] = Article::where('id', $id);
+
+        $this->data['tags'] = Tags::pluck('name', 'id');
+        $this->data['categories'] = ArticleCategory::pluck('name', 'id');
+
+        return view('admin.articles.form', $this->data);
     }
 
     /**
@@ -105,7 +114,12 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        //
+        $this->data['articles'] = Article::where('id', $id);
+
+        $this->data['tags'] = Tags::pluck('name', 'id');
+        $this->data['categories'] = ArticleCategory::pluck('name', 'id');
+
+        return view('admin.articles.form', $this->data);
     }
 
     /**
@@ -128,6 +142,9 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $article = Article::find($id);
+        $article->delete();
+
+        return redirect('admin/articles')->with(['success' => 'Artikel berhasil dihapus!']);
     }
 }

@@ -45,7 +45,7 @@
                         </div>
                         <div class="form-group">
                             {!! Form::label('tags', 'Tags') !!}
-                            {!! Form::select('select2', $tags , null, ['class' => 'form-control select2', 'id' => 'tags[]', 'data-placeholder' => "-- Set Tags --", 'multiple' => "multiple"]) !!}
+                            {!! Form::select('select2', $tags , null, ['class' => 'form-control select2', 'name' => 'tags[]', 'data-placeholder' => "-- Set Tags --", 'multiple' => "multiple"]) !!}
                         </div>
                         <div class="form-footer pt-5 border-top">
                             <button type="submit" class="btn btn-primary btn-default">Save</button>

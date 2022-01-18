@@ -12,6 +12,7 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
+              @include('admin.partials.flash')
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                   <tr>
