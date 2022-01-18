@@ -10,9 +10,13 @@ class Songs extends Model
     use HasFactory;
 
     protected $table = 'songs';
-    
+
     protected $fillable = [
         'title', 'genre', 'artist', 'likes', 'images'
     ];
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class)->whereNull('parent_id');
+    }
 }

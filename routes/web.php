@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\Admin\SubscribeController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Client\PageController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,6 +41,9 @@ Route::get('songs-item', function () {
 });
 
 Route::post('/subscribe', [SubscribeController::class, 'store']);
+
+//Comments Section
+Route::post('comments', [CommentController::class, 'store'])->name('comments.store');
 
 Auth::routes();
 
