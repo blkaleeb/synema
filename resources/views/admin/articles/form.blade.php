@@ -15,8 +15,8 @@
                 </div>
                 <div class="card-body">
                     @include('admin.partials.flash', ['$errors' => $errors])
-                    @if (!empty($song))
-                        {!! Form::model($song, ['url' => ['admin/articles', $song->id], 'method' => 'PUT']) !!}
+                    @if (!empty($articles))
+                        {!! Form::model($articles, ['url' => ['admin/articles', $articles->id], 'method' => 'PUT']) !!}
                         {!! Form::hidden('id') !!}
                     @else
                         {!! Form::open(['url' => 'admin/articles', 'enctype' => 'multipart/form-data']) !!}

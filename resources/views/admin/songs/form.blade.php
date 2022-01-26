@@ -5,7 +5,7 @@
 @php
     $formTitle = !empty($songs) ? 'Update' : 'New'    
 @endphp
-
+{{-- @dd($statuses) --}}
 <div class="content">
     <div class="row">
         <div class="col-lg-8">
@@ -21,9 +21,19 @@
                     @else
                         {!! Form::open(['url' => 'admin/songs']) !!}
                     @endif
+                        {{-- <div class="form-group">
+                            {!! Form::label('image', 'Image') !!}
+                            <div class="col-sm-6">
+                                {!! Form::file('images[0]', ['id' => 'mainThumbnail']) !!}
+                            </div>
+                        </div> --}}
                         <div class="form-group">
                             {!! Form::label('title', 'Title') !!}
                             {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'title']) !!}
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('group', 'Group') !!}
+                            {!! Form::select('group', $group , null, ['class' => 'form-control', 'placeholder' => '-- Set Group --']) !!}
                         </div>
                         <div class="form-group">
                             {!! Form::label('artists', 'Artists') !!}
@@ -68,6 +78,7 @@
       FilePondPluginFileValidateSize,
       FilePondPluginImagePreview,
     );
+    
     FilePond.setOptions({
       server: {
         process: '/admin/upload/songs',

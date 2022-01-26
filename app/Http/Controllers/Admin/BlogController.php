@@ -114,7 +114,7 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        $this->data['articles'] = Article::where('id', $id);
+        $this->data['articles'] = Article::where('id', $id)->first();
 
         $this->data['tags'] = Tags::pluck('name', 'id');
         $this->data['categories'] = ArticleCategory::pluck('name', 'id');

@@ -8,8 +8,18 @@ use App\Models\TemporaryFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
+use DB;
+use Auth;
+use Session;
+
 class SongsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->data['group'] = Songs::group();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +28,6 @@ class SongsController extends Controller
     public function index()
     {
         $this->data['songs'] = Songs::orderBy('title', 'ASC')->paginate(10);
-
         return view('admin.songs.index', $this->data);
     }
 
@@ -30,7 +39,7 @@ class SongsController extends Controller
     public function create()
     {
 
-        return view('admin.songs.form');
+        return view('admin.songs.form', $this->data);
     }
 
     /**
@@ -53,6 +62,7 @@ class SongsController extends Controller
         $songs->genre = $request->genre;
         $songs->description = $request->description;
         $songs->likes = 0;
+        $songs->group = $request->group;
         $songs->slug = Str::slug($request->title);
         $file = $request->input('images');
         for ($i = 0; $i < count($file); $i++) {
@@ -113,10 +123,11 @@ class SongsController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'title' => 'required|unique:songs|max:255',
             'artists' => 'required',
             'genre' => 'required',
         ]);
+
+        // dd($request);
 
         $songs = Songs::where('id', $id)->first();
         $songs->title = $request->title;
