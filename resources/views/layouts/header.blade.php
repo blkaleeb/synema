@@ -65,12 +65,13 @@
             </div>
 
             <!-- Top Social Area -->
+            {{-- @dd($compro) --}}
             <div class="top-social-area">
-              <a href="#" class="fa fa-facebook" aria-hidden="true"></a>
-              <a href="#" class="fa fa-twitter" aria-hidden="true"></a>
-              <a href="#" class="fa fa-pinterest" aria-hidden="true"></a>
-              <a href="#" class="fa fa-instagram" aria-hidden="true"></a>
-              <a href="#" class="fa fa-youtube-play" aria-hidden="true"></a>
+              <a href="{{ $compro->facebook }}" target="a_blank" class="fa fa-facebook" aria-hidden="true"></a>
+              <a href="{{ $compro->twitter }}" target="a_blank" class="fa fa-twitter" aria-hidden="true"></a>
+              <a href="{{ $compro->instagram }}" target="a_blank" class="fa fa-pinterest" aria-hidden="true"></a>
+              <a href="{{ $compro->spotify }}" target="a_blank" class="fa fa-instagram" aria-hidden="true"></a>
+              <a href="{{ $compro->youtube }}" target="a_blank" class="fa fa-youtube-play" aria-hidden="true"></a>
             </div>
 
           </div>

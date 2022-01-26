@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="form-group">
                                     {!! Form::label('email', 'Email') !!}
-                                    {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Input email here...']) !!}
+                                    {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Input email here...']) !!}
                                 </div>
                                 <div class="form-group">
                                     {!! Form::label('address', 'Address') !!}
