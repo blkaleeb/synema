@@ -20,21 +20,21 @@
             <!-- sidebar menu -->
             <ul class="nav sidebar-inner" id="sidebar-menu">
                 
-                <li class="">
+                <li class="{{ $activePage == 'Songs' ? 'active' : '' }}">
                     <a class="sidenav-item-link" href="{{ url('admin/songs') }}">
                         <i class="mdi mdi-library-music"></i>
                         <span class="nav-text">Songs</span>
                     </a>
                 </li>
 
-                <li class="">
+                <li class="{{ $activePage == 'Banner' ? 'active' : '' }}">
                     <a class="sidenav-item-link" href="{{ url('admin/banners') }}">
                         <i class="mdi mdi-camera-burst"></i>
                         <span class="nav-text">Banner</span>
                     </a>
                 </li>
                 
-                <li class="has-sub active expand">
+                <li class="has-sub {{ $activePage == 'Article' ? 'active' : '' }} expand">
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
                         data-target="#articles" aria-expanded="false" aria-controls="articles">
                         <i class="mdi mdi-blogger"></i>
@@ -64,21 +64,21 @@
                     </ul>
                 </li>
 
-                <li class="">
+                <li class="{{ $activePage == 'Compro' ? 'active' : '' }}">
                     <a class="sidenav-item-link" href="{{ url('admin/compro') }}">
                         <i class="mdi mdi-contact-mail"></i>
                         <span class="nav-text">Company Profile</span>
                     </a>
                 </li>
 
-                <li class="">
+                <li class="{{ $activePage == 'Links' ? 'active' : '' }}">
                     <a class="sidenav-item-link" href="{{ url('admin/links') }}">
                         <i class="mdi mdi-link"></i>
                         <span class="nav-text">Links</span>
                     </a>
                 </li>
 
-                <li class="">
+                <li class="{{ $activePage == 'Email' ? 'active' : '' }}">
                     <a class="sidenav-item-link" href="{{ url('admin/email') }}">
                         <i class="mdi mdi-email-alert"></i>
                         <span class="nav-text">Subscribed Email</span>

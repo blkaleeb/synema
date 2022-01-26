@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('admin.layout', ['activePage' => 'Compro'])
 @section('content')
 <div class="content">
     <div class="row">

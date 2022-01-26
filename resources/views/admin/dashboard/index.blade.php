@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('admin.layout', ['activePage' => 'Dashboard'])
 @section('content')
     
 <div class="content">
