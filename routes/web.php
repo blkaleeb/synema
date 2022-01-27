@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\Admin\SubscribeController;
 use App\Http\Controllers\Admin\UploadController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Client\PageController;
 use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
@@ -66,3 +67,5 @@ Route::delete("/destroy", [UploadController::class, 'delete'])->name("destroy");
 Route::post("/admin/upload/{folder}", [UploadController::class, 'store']);
 
 Route::get('/cms', [App\Http\Controllers\Admin\IndexController::class, 'index'])->name('cms');
+
+Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset.token');
