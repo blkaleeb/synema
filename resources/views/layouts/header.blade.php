@@ -67,13 +67,12 @@
             <!-- Top Social Area -->
             {{-- @dd($compro) --}}
             <div class="top-social-area">
-              <a href="{{ $compro->facebook }}" target="a_blank" class="fa fa-facebook" aria-hidden="true"></a>
-              <a href="{{ $compro->twitter }}" target="a_blank" class="fa fa-twitter" aria-hidden="true"></a>
-              <a href="{{ $compro->instagram }}" target="a_blank" class="fa fa-pinterest" aria-hidden="true"></a>
-              <a href="{{ $compro->spotify }}" target="a_blank" class="fa fa-instagram" aria-hidden="true"></a>
-              <a href="{{ $compro->youtube }}" target="a_blank" class="fa fa-youtube-play" aria-hidden="true"></a>
+              <a href="{{ isset($compro->facebook) ? $compro->facebook : '' }}" target="a_blank" class="fa fa-facebook" aria-hidden="true"></a>
+              <a href="{{ isset($compro->twitter) ? $compro->twitter : '' }}" target="a_blank" class="fa fa-twitter" aria-hidden="true"></a>
+              <a href="{{ isset($compro->instagram) ? $compro->instagram : '' }}" target="a_blank" class="fa fa-instagram" aria-hidden="true"></a>
+              <a href="{{ isset($compro->spotify) ? $compro->spotify : '' }}" target="a_blank" class="fa fa-spotify" aria-hidden="true"></a>
+              <a href="{{ isset($compro->youtube) ? $compro->youtube : '' }}" target="a_blank" class="fa fa-youtube-play" aria-hidden="true"></a>
             </div>
-
           </div>
           <!-- Nav End -->
         </div>
