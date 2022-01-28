@@ -63,11 +63,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
           <h4 class="widget-title">Follow Us</h4>
           <!-- Social Info -->
           <div class="footer-social-info">
-            <a href="#" class="facebook" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a>
-            <a href="#" class="twitter" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a>
-            <a href="#" class="pinterest" data-toggle="tooltip" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a>
-            <a href="#" class="instagram" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a>
-            <a href="#" class="youtube" data-toggle="tooltip" data-placement="top" title="YouTube"><i class="fa fa-youtube-play"></i></a>
+            <a href="{{ isset($compro->facebook) ? $compro->facebook : '' }}" class="facebook" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a>
+            <a href="{{ isset($compro->twitter) ? $compro->twitter : '' }}" class="twitter" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a>
+            <a href="{{ isset($compro->spotify) ? $compro->spotify : '' }}" class="spotify" data-toggle="tooltip" data-placement="top" title="Pinterest"><i class="fa fa-spotify"></i></a>
+            <a href="{{ isset($compro->instagram) ? $compro->instagram : '' }}" class="instagram" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a>
+            <a href="{{ isset($compro->youtube) ? $compro->youtube : '' }}" class="youtube" data-toggle="tooltip" data-placement="top" title="YouTube"><i class="fa fa-youtube-play"></i></a>
           </div>
           <!-- App Download Button -->
           <div class="app-download-button mt-30">

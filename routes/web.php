@@ -23,7 +23,7 @@ Route::get('/', [PageController::class, 'home']);
 
 Route::get('home', [PageController::class, 'home']);
 
-Route::get('songs', [PageController::class, 'song']);
+Route::get('songs/{group}', [PageController::class, 'song']);
 Route::get('song-item/{id}', [PageController::class, 'songShow']);
 
 Route::get('blog', [PageController::class, 'blog']);

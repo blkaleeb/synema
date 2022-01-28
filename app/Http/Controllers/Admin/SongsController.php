@@ -133,6 +133,8 @@ class SongsController extends Controller
         $songs->title = $request->title;
         $songs->artists = $request->artists;
         $songs->genre = $request->genre;
+        $songs->group = $request->group;
+        $songs->description = $request->description;
         $songs->likes = 0;
         $songs->slug = Str::slug($request->title);
 

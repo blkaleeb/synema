@@ -55,10 +55,17 @@ class PageController extends Controller
         return view('client.blog-item', $this->data);
     }
 
-    public function song()
+    public function song($group)
     {
-        $this->data['newSongs'] = Songs::latest()->first();
-        $this->data['songs'] = Songs::latest()->get();
+        if ($group == 'inema') {
+            $this->data['newSongs'] = Songs::where('group', 0)->latest()->first();
+            $this->data['songs'] = Songs::where('group', 0)->latest()->get();
+        } else {
+            $this->data['newSongs'] = Songs::where('group', 1)->latest()->first();
+            $this->data['songs'] = Songs::where('group', 1)->latest()->get();
+        }
+
+        dd($this->data['newSongs']);
 
         return view('client.songs', $this->data);
     }
