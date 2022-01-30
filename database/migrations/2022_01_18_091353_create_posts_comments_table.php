@@ -22,6 +22,7 @@ class CreatePostsCommentsTable extends Migration
         });
         Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
             $table->string('email');
             $table->integer('songs_id')->unsigned();
             $table->integer('parent_id')->unsigned()->nullable();

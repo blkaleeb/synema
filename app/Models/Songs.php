@@ -23,8 +23,8 @@ class Songs extends Model
     public static function group()
     {
         return [
-            0 => '!nema',
-            1 => 'Synema',
+            0 => 'Synema',
+            1 => 'Verse',
         ];
     }
 }

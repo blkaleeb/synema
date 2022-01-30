@@ -50,8 +50,8 @@
                   </li>
                 </ul>
               </li> --}}
-              <li class="{{ $activePage == '!nema' ? 'current-item' : '' }}"><a href="{{ url('songs' , 'inema') }}">!nema</a></li>
-              <li class="{{ $activePage == 'Synema' ? 'current-item' : '' }}"><a href="{{ url('songs', 'synema') }}">Synema</a></li>
+              <li class="{{ $activePage == 'synema' ? 'current-item' : '' }}"><a href="{{ url('songs' , 'synema') }}">Synema Worship</a></li>
+              <li class="{{ $activePage == 'verse' ? 'current-item' : '' }}"><a href="{{ url('songs', 'verse') }}">Verse Records</a></li>
               <li class="{{ $activePage == 'Blog' ? 'current-item' : '' }}"><a href="{{ url('blog') }}">Blog</a></li>
               <li class="{{ $activePage == 'About' ? 'current-item' : '' }}"><a href="./about.html">About</a></li>
               <li class="{{ $activePage == 'Contact' ? 'current-item' : '' }}"><a href="{{ url('contact') }}">Contact</a></li>

@@ -54,7 +54,7 @@
     @endforeach
 
     <!-- Single Welcome Slide -->
-    <div class="welcome-welcome-slide bg-img bg-overlay" style="background-image: url(img/bg-img/2.jpg') }});">
+    <div class="welcome-welcome-slide bg-img bg-overlay" style="background-image: url({{ asset('img/bg-img/banner.jpg') }});">
       <div class="container h-100">
         <div class="row h-100 align-items-center">
           <div class="col-12">
@@ -100,7 +100,7 @@
     </div>
 
     <!-- Single Welcome Slide -->
-    <div class="welcome-welcome-slide bg-img bg-overlay" style="background-image: url(img/bg-img/3.jpg') }});">
+    <div class="welcome-welcome-slide bg-img bg-overlay" style="background-image: url({{ asset('img/bg-img/2.jpg') }});">
       <div class="container h-100">
         <div class="row h-100 align-items-center">
           <div class="col-12">

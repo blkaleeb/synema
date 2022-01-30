@@ -57,13 +57,15 @@ class PageController extends Controller
 
     public function song($group)
     {
-        if ($group == 'inema') {
+        if ($group == 'synema') {
             $this->data['newSongs'] = Songs::where('group', 0)->latest()->first();
             $this->data['songs'] = Songs::where('group', 0)->latest()->get();
         } else {
             $this->data['newSongs'] = Songs::where('group', 1)->latest()->first();
             $this->data['songs'] = Songs::where('group', 1)->latest()->get();
         }
+
+        $this->data['group'] = $group;
 
         return view('client.songs', $this->data);
     }
