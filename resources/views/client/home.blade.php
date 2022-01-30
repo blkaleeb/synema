@@ -164,17 +164,14 @@
   </div>
 
   <!-- Projects Menu -->
-  {{-- <div class="container">
+  <div class="container">
     <div class="poca-projects-menu mb-30 wow fadeInUp" data-wow-delay="0.3s">
       <div class="text-center portfolio-menu">
-        <button class="btn active" data-filter="*">All</button>
-        <button class="btn" data-filter=".entre">Entrepreneurship</button>
-        <button class="btn" data-filter=".media">Media</button>
-        <button class="btn" data-filter=".tech">Tech</button>
-        <button class="btn" data-filter=".tutor">Tutorials</button>
+        <button class="btn" data-filter=".entre">Synema</button>
+        <button class="btn" data-filter=".media">Verse</button>
       </div>
     </div>
-  </div> --}}
+  </div>
 
   <div class="container">
     <div class="row poca-portfolio">

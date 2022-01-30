@@ -65,8 +65,6 @@ class PageController extends Controller
             $this->data['songs'] = Songs::where('group', 1)->latest()->get();
         }
 
-        dd($this->data['newSongs']);
-
         return view('client.songs', $this->data);
     }
 
