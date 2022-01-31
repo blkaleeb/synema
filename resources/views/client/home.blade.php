@@ -239,7 +239,7 @@
       <!-- Single Featured Guest -->
       <div class="col-12 col-sm-6 col-md-4 col-lg-3">
         <div class="single-featured-guest mb-80">
-          <img src="{{ asset('storage/'. $artist->image) }}" alt="">
+          <a href="{{ url('artist-detail/' . $artist->id) }}"><img src="{{ asset('storage/'. $artist->image) }}" alt=""></a>
           <div class="guest-info">
             <h5>{{ $artist->name }}</h5>
             <span>{{ $artist->role }}</span>

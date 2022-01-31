@@ -29,6 +29,8 @@ Route::get('song-item/{id}', [PageController::class, 'songShow']);
 Route::get('blog', [PageController::class, 'blog']);
 Route::get('blog-item/{id}', [PageController::class, 'blogShow']);
 
+Route::get('artist-detail/{id}', [PageController::class, 'artistShow']);
+
 Route::get('contact', function () {
     return view('client.contact');
 });

@@ -1546,6 +1546,7 @@ ul li {
 .post-details-text p {
     color: #232323;
     font-size: 18px;
+    text-align: justify;
 }
 @media only screen and (max-width: 767px) {
     .post-details-text p {

@@ -41,7 +41,7 @@ class PageController extends Controller
             $this->data['articles'] = $searchValues->get();
         }
 
-        // dd($this->data['articleCategories']);
+        // dd($this->data['articles']);
 
         return view('client.blog', $this->data);
     }
@@ -55,6 +55,12 @@ class PageController extends Controller
         $this->data['tags'] = $articleTag;
 
         return view('client.blog-item', $this->data);
+    }
+
+    public function artistShow($id)
+    {
+        $this->data['artists'] = Artist::where('id', $id)->first();
+        return view('client.artist-detail', $this->data);
     }
 
     public function song($group)

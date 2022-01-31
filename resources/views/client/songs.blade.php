@@ -1,7 +1,7 @@
 @extends('layouts.main', ['activePage' => $group])
 @section('content')
     <!-- ***** Breadcrumb Area Start ***** -->
-  <div class="breadcumb-area bg-img bg-overlay" style="background-image: url(//synema.test/img/bg-img/2.jpg);">
+  <div class="breadcumb-area bg-img bg-overlay" style="background-image: url(/img/bg-img/2.jpg);">
     <div class="container h-100">
       <div class="row h-100 align-items-center">
         <div class="col-12">

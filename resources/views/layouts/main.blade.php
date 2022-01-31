@@ -22,6 +22,8 @@
         {{ $songs->title }} | Synema
     @elseif ($activePage == 'blog-item')
         {{ $article->title }} | Synema
+    @elseif ($activePage == 'artist-detail')
+        {{ $artists->name }} | Synema
     @else
         {{ $activePage }} | Synema
     @endif

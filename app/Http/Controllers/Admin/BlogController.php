@@ -134,10 +134,30 @@ class BlogController extends Controller
         $article = Article::where('id', $id)->first();
         $article->title = $request->title;
         $article->subtitle = $request->subtitle;
-        $article->category_id = $request->articleCategory;
+        $article->category_id = $request->category;
         $article->slug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $request->title)));
-        $article->title = $request->title;
-        $description = $request->description;
+        $article->description = $request->description;
+
+        $file = $request->input('images');
+        for ($i = 0; $i < count($file); $i++) {
+            $pathRemoveQuote = trim($file[$i], '"');
+            $imagePath = trim(substr($file[$i], strpos($file[$i], "/") + 1), '"');
+            $temporaryFile = TemporaryFile::where('filename', $imagePath)->first();
+            if ($temporaryFile) {
+                if ($i === 0) {
+                    $article->image = 'images/' . $pathRemoveQuote;
+                } else if ($i === 1) {
+                    $article->image = 'images/' . $pathRemoveQuote;
+                } else if ($i === 2) {
+                    $article->image = 'images/' . $pathRemoveQuote;
+                }
+                $temporaryFile->delete();
+            }
+        }
+
+        $article->save();
+
+        return redirect('admin/articles')->with(['success' => 'Perubahan artikel berhasil!']);
     }
 
     /**

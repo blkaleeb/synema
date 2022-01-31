@@ -53,6 +53,7 @@ class SongsController extends Controller
         $request->validate([
             'title' => 'required|unique:songs|max:255',
             'artists' => 'required',
+            'description' => 'required',
             'genre' => 'required',
         ]);
 
