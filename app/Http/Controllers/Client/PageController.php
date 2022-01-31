@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\ArticleCategory;
+use App\Models\Artist;
 use App\Models\Banners;
 use App\Models\Songs;
 use App\Models\Tags;
@@ -16,6 +17,7 @@ class PageController extends Controller
     {
         $this->data['banners'] = Banners::orderBy('id', 'ASC')->with("songs")->get();
         $this->data['songs'] = Songs::orderBy('id', 'ASC')->get();
+        $this->data['artists'] = Artist::orderBy('id', 'ASC')->get();
 
         return view('client.home', $this->data);
     }

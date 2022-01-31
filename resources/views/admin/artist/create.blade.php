@@ -69,10 +69,6 @@
     $('.dropdown-toggle').dropdown();
 </script>
 <script>
-
-  // prettier-ignore
-  const mainImage = {!! json_encode($artists->image, JSON_HEX_TAG) !!};
-
     // Register plugins
     FilePond.registerPlugin(
       FilePondPluginFileValidateSize,
@@ -88,42 +84,17 @@
       }
     });
 
-    // const inputElement = document.querySelector(`input[id="mainImage"]`);
-    // const pond = FilePond.create(inputElement, {
-    //     forceRevert: true
-    // });
+    const inputElement = document.querySelector(`input[id="mainImage"]`);
+    const pond = FilePond.create(inputElement, {
+        forceRevert: true
+    });
 
-    // for (let i = 0; i < 2; i++) {
-    //     const inputElement = document.querySelector(`input[id="sideImage${i}"]`);
-    //     const pond = FilePond.create(inputElement, {
-    //     forceRevert: true
-    //     });
-    // }
+    for (let i = 0; i < 2; i++) {
+        const inputElement = document.querySelector(`input[id="sideImage${i}"]`);
+        const pond = FilePond.create(inputElement, {
+        forceRevert: true
+        });
+    }
 
-    const inputElementMainImage = document.querySelector('input[id="mainImage"]');
-    const mainPond = FilePond.create(inputElementMainImage, {
-    forceRevert: true,
-    allowProcess: false,
-    files: [{
-      // the server file reference
-      source: `{{asset('storage/${mainImage}')}}` || '',
-
-      // set type to local to indicate an already uploaded file
-      options: {
-
-        // optional stub file information
-        file: {
-          name: `{{asset('storage/${mainImage}')}}`,
-          size: `3001025`,
-          type: 'image/png',
-        },
-
-        // pass poster property
-        metadata: {
-          poster: `{{asset('storage/${mainImage}')}}` || ''
-        },
-      },
-    }],
-  });
 </script>
 @endsection

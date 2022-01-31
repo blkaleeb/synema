@@ -228,45 +228,25 @@
       <!-- Section Heading -->
       <div class="col-12">
         <div class="section-heading text-center">
-          <h2>Featured Guests</h2>
+          <h2>Our Personnel</h2>
           <div class="line"></div>
         </div>
       </div>
     </div>
 
     <div class="row justify-content-around">
+      @foreach ($artists as $artist)
       <!-- Single Featured Guest -->
       <div class="col-12 col-sm-6 col-md-4 col-lg-3">
         <div class="single-featured-guest mb-80">
-          <img src="img/bg-img/25.jpg') }}" alt="">
+          <img src="{{ asset('storage/'. $artist->image) }}" alt="">
           <div class="guest-info">
-            <h5>Alfred Day</h5>
-            <span>PRODUCER</span>
+            <h5>{{ $artist->name }}</h5>
+            <span>{{ $artist->role }}</span>
           </div>
         </div>
       </div>
-
-      <!-- Single Featured Guest -->
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-        <div class="single-featured-guest mb-80">
-          <img src="img/bg-img/26.jpg') }}" alt="">
-          <div class="guest-info">
-            <h5>Jayden White</h5>
-            <span>DRUMMER</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Single Featured Guest -->
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-        <div class="single-featured-guest mb-80">
-          <img src="img/bg-img/27.jpg') }}" alt="">
-          <div class="guest-info">
-            <h5>Vincent Reid</h5>
-            <span>ENTREPRENEUR</span>
-          </div>
-        </div>
-      </div>
+      @endforeach
     </div>
   </div>
 </section>

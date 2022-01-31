@@ -29,7 +29,7 @@ class ArtistsController extends Controller
      */
     public function create()
     {
-        return view('admin.artist.form');
+        return view('admin.artist.create');
     }
 
     /**
