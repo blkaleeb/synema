@@ -27,6 +27,13 @@
                     </a>
                 </li>
 
+                <li class="{{ $activePage == 'Artists' ? 'active' : '' }}">
+                    <a class="sidenav-item-link" href="{{ url('admin/artists') }}">
+                        <i class="mdi mdi-library-music"></i>
+                        <span class="nav-text">Artists</span>
+                    </a>
+                </li>
+
                 <li class="{{ $activePage == 'Banner' ? 'active' : '' }}">
                     <a class="sidenav-item-link" href="{{ url('admin/banners') }}">
                         <i class="mdi mdi-camera-burst"></i>

@@ -131,7 +131,13 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $article = Article::where('id', $id)->first();
+        $article->title = $request->title;
+        $article->subtitle = $request->subtitle;
+        $article->category_id = $request->articleCategory;
+        $article->slug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $request->title)));
+        $article->title = $request->title;
+        $description = $request->description;
     }
 
     /**

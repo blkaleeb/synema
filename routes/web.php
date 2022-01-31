@@ -64,6 +64,7 @@ Route::group(
         Route::resource('article_category', '\App\Http\Controllers\Admin\ArticleCategoryController');
         Route::resource('email', '\App\Http\Controllers\Admin\SubscribeController');
         Route::resource('banners', '\App\Http\Controllers\Admin\BannerController');
+        Route::resource('artists', '\App\Http\Controllers\Admin\ArtistsController');
     }
 );
 
