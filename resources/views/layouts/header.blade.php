@@ -53,16 +53,16 @@
               <li class="{{ $activePage == 'synema' ? 'current-item' : '' }}"><a href="{{ url('songs' , 'synema') }}">Synema Worship</a></li>
               <li class="{{ $activePage == 'verse' ? 'current-item' : '' }}"><a href="{{ url('songs', 'verse') }}">Verse Records</a></li>
               <li class="{{ $activePage == 'Blog' ? 'current-item' : '' }}"><a href="{{ url('blog') }}">Blog</a></li>
-              <li class="{{ $activePage == 'About' ? 'current-item' : '' }}"><a href="./about.html">About</a></li>
+              <li class="{{ $activePage == 'About' ? 'current-item' : '' }}"><a href="{{ url('about') }}">About</a></li>
               <li class="{{ $activePage == 'Contact' ? 'current-item' : '' }}"><a href="{{ url('contact') }}">Contact</a></li>
             </ul>
 
             <!-- Top Search Area -->
             <div class="top-search-area">
-              <form action="index.html" method="post">
+              {{-- <form action="index.html" method="post">
                 <input type="search" name="top-search-bar" class="form-control" placeholder="Search and hit enter...">
                 <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-              </form>
+              </form> --}}
             </div>
 
             <!-- Top Social Area -->
