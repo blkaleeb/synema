@@ -63,10 +63,29 @@ class UploadController extends Controller
         $imagePath = str_replace('"', '', $request->getContent());
 
         // dd($imagePath);
+        $x = explode('/', $imagePath);
+        $y = explode('.', $x[1]);
+        $folder = $x[0];
+        $fileType = substr($imagePath, -3);
+        // dd($fileType);
 
-        unlink(storage_path('app/public/images/' . $imagePath));
-        $temporaryFile = TemporaryFile::where('filename', substr($imagePath, strpos($imagePath, "/") + 1))->first();
-        $temporaryFile->delete();
+        if ($folder == 'songs') {
+            if ($fileType == 'jpg' || $fileType == 'jpe' || $fileType == 'png' || $fileType == 'HEIC') {
+                $unlink = $x[1];
+                // dd($imagePath);
+                unlink(storage_path('app/public/songs/thumbnail/' . $unlink));
+                $temporaryFile = TemporaryFile::where('filename', substr($imagePath, strpos($imagePath, "/") + 1))->first();
+                $temporaryFile->delete();
+            } else {
+                unlink(storage_path('app/public/' . $imagePath));
+                $temporaryFile = TemporaryFile::where('filename', substr($imagePath, strpos($imagePath, "/") + 1))->first();
+                $temporaryFile->delete();
+            }
+        } else {
+            unlink(storage_path('app/public/images/' . $imagePath));
+            $temporaryFile = TemporaryFile::where('filename', substr($imagePath, strpos($imagePath, "/") + 1))->first();
+            $temporaryFile->delete();
+        }
 
         return response()->json('Berhasil revert file', 200)->setEncodingOptions(JSON_UNESCAPED_SLASHES);
     }
