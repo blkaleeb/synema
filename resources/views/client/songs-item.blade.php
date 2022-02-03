@@ -97,7 +97,7 @@
 
             <!-- Comments Area -->
             <div class="comment_area mb-50 clearfix">
-              <h5 class="title">03 Comments</h5>
+              <h5 class="title">Comments</h5>
 
               @include('client.commentsDisplay' , ['comments' => $songs->comments, 'songs_id' => $songs->id])
             </div>
@@ -135,25 +135,14 @@
         <div class="sidebar-area mt-5">
 
           <!-- Single Widget Area -->
-          <div class="single-widget-area search-widget-area mb-80">
-            <form action="#" method="post">
-              <input type="search" name="search" class="form-control" placeholder="Search ...">
-              <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
-          </div>
-
-          <!-- Single Widget Area -->
           <div class="single-widget-area catagories-widget mb-80">
             <h5 class="widget-title">Genre</h5>
 
             <!-- catagories list -->
             <ul class="catagories-list">
-              <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Entrepreneurship</a></li>
-              <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Media</a></li>
-              <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Tech</a></li>
-              <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Tutorials</a></li>
-              <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Business</a></li>
-              <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Entertainment</a></li>
+              @foreach ($genre as $item)
+              <li><a href="{{ url('songs/seynema?category_name='.$item->genre) }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i> {{ $item->genre }}</a></li>
+              @endforeach
             </ul>
           </div>
 
@@ -164,7 +153,7 @@
             <!-- Single News Area -->
             <div class="single-news-area d-flex">
               <div class="blog-thumbnail">
-                <img src="./img/bg-img/11.jpg" alt="">
+                <img src="{{ asset('storage/' . $song->image) }}" alt="">
               </div>
               <div class="blog-content">
                 <a href="#" class="post-title">{{ $song->title }}</a>
@@ -180,4 +169,16 @@
     </div>
   </div>
 </section>
+@endsection
+
+@section('javascript')
+<script type="text/javascript">
+	const onSongsSearch = () => {
+		const search = document.getElementById("search").value || '';
+		const urlSearchParams = new URLSearchParams(window.location.search);
+		urlSearchParams.set('search', search)
+
+		window.location = `{{ url('songs/seynema?${urlSearchParams}')}}`;
+	}
+</script>
 @endsection

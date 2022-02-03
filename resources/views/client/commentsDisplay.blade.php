@@ -6,7 +6,7 @@
     <div class="comment-content d-flex">
       <!-- Comment Author -->
       <div class="comment-author">
-        <img src="img/bg-img/16.jpg" alt="author">
+        <img src="{{ asset('img/bg-img/user-icon.png') }}" alt="author">
       </div>
       <!-- Comment Meta -->
       <div class="comment-meta">

@@ -7,6 +7,7 @@ use App\Models\Article;
 use App\Models\ArticleCategory;
 use App\Models\Artist;
 use App\Models\Banners;
+use App\Models\Genre;
 use App\Models\Songs;
 use App\Models\Tags;
 use Illuminate\Http\Request;
@@ -63,7 +64,7 @@ class PageController extends Controller
         return view('client.artist-detail', $this->data);
     }
 
-    public function song($group)
+    public function song(Request $request, $group)
     {
         if ($group == 'synema') {
             $this->data['newSongs'] = Songs::where('group', 0)->latest()->first();
@@ -75,6 +76,18 @@ class PageController extends Controller
 
         $this->data['group'] = $group;
 
+        if ($request->has("search")) {
+            $this->data['songs'] = $this->data['songs']->where(
+                "title",
+                "like",
+                "%" . $request->search . "%"
+            );
+        }
+
+        if ($request->has("category_name")) {
+            $this->data['songs'] = $this->data['songs']->where("genre", $request->category_name);
+        }
+
         return view('client.songs', $this->data);
     }
 
@@ -83,10 +96,10 @@ class PageController extends Controller
         $this->data['songs'] = Songs::where('id', $id)->first();
         $this->data['newSongs'] = Songs::orderBy('created_at', 'DESC')->get();
 
-        $this->data['allSongs'] = Songs::all();
+        $this->data['allSongs'] = Songs::all()->take(5);
 
-        // dd($this->data['allSongs']);
-
+        $this->data['genre'] = Songs::select('genre')->groupBy('genre')->get();
+        // dd($this->data['genre']);
         return view('client.songs-item', $this->data);
     }
 }

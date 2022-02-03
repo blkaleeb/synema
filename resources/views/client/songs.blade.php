@@ -36,7 +36,7 @@
           @else
           <div class="poca-music-area box-shadow d-flex align-items-center flex-wrap border" data-animation="fadeInUp" data-delay="900ms">
             <div class="poca-music-thumbnail">
-              <img src="./img/bg-img/4.jpg" alt="">
+              <img src="{{ asset('storage/'.$newSongs->image) }}" alt="">
             </div>
             <div class="poca-music-content">
               <span class="music-published-date">{{ $newSongs->created_at }}</span>
@@ -95,7 +95,7 @@
           <!-- Welcome Music Area -->
           <div class="poca-music-area style-2 d-flex align-items-center flex-wrap">
             <div class="poca-music-thumbnail">
-              <a href="{{ url('song-item/'.$song->id)}}"><img src="./img/bg-img/5.jpg" alt=""></a>
+              <a href="{{ url('song-item/'.$song->id)}}"><img src="{{ asset('storage/'. $song->image) }}" alt=""></a>
             </div>
             <div class="poca-music-content text-center">
               <span class="music-published-date mb-2">{{ $song->created_at }}</span>
