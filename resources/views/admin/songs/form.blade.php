@@ -21,12 +21,10 @@
                     @else
                         {!! Form::open(['url' => 'admin/songs']) !!}
                     @endif
-                        {{-- <div class="form-group">
+                        <div class="form-group">
                             {!! Form::label('image', 'Image') !!}
-                            <div class="col-sm-6">
-                                {!! Form::file('images[0]', ['id' => 'mainThumbnail']) !!}
-                            </div>
-                        </div> --}}
+                            <input type="file" name="thumbnail[0]" id="thumbnail">
+                        </div>
                         <div class="form-group">
                             {!! Form::label('title', 'Title') !!}
                             {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'title']) !!}
@@ -49,7 +47,7 @@
                         </div>
                         <div class="form-group">
                             {!! Form::label('sound', 'Sound') !!}
-                            {!! Form::file('images[0]', ['id' => 'mainImage']) !!}
+                                <input type="file" name="images[0]" id="mainImage">
                         </div>
                         <div class="form-footer pt-5 border-top">
                             <button type="submit" class="btn btn-primary btn-default">Save</button>
@@ -73,30 +71,28 @@
     $('.dropdown-toggle').dropdown();
 </script>
 <script>
-    // Register plugins
-    FilePond.registerPlugin(
-      FilePondPluginFileValidateSize,
-      FilePondPluginImagePreview,
-    );
-    
-    FilePond.setOptions({
-      server: {
-        process: '/admin/upload/songs',
-        revert: '/destroy',
-        headers: {
-          'X-CSRF-TOKEN': '{{ csrf_token() }}'
-        }
+  // Register plugins
+  FilePond.registerPlugin(
+    FilePondPluginFileValidateSize,
+    FilePondPluginImagePreview,
+  );
+  FilePond.setOptions({
+    server: {
+      process: '/admin/upload/songs',
+      revert: '/destroy',
+      headers: {
+        'X-CSRF-TOKEN': '{{ csrf_token() }}'
       }
-    });
-    const inputElement = document.querySelector(`input[id="mainImage"]`);
-    const pond = FilePond.create(inputElement, {
-        forceRevert: true
-    });
-    for (let i = 0; i < 2; i++) {
-    const inputElement = document.querySelector(`input[id="sideImage${i}"]`);
-    const pond = FilePond.create(inputElement, {
-      forceRevert: true
-    });
-  }
+    }
+  })
+  const inputElement = document.querySelector(`input[id="mainImage"]`);
+  const pond = FilePond.create(inputElement, {
+    forceRevert: true
+  });
+
+  const inputElement1 = document.querySelector(`input[id="thumbnail"]`);
+  const pond1 = FilePond.create(inputElement1, {
+    forceRevert: true
+  });
 </script>
 @endsection

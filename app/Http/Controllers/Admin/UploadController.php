@@ -25,18 +25,33 @@ class UploadController extends Controller
             }
             $response = str_replace('"', '', $folder . '/' . $createdAt . '_' . $file[0]->getClientOriginalName());
         } else {
-            $createdAt = Carbon::now()->format('d-m-Y');
-            $file = $request->file('images', []);
-            foreach ($file as $data) {
-                $filename = $createdAt . '_' . $data->getClientOriginalName();
-                $data->storeAs('public/' . $folder, $filename);
+            if ($request->file('images', []) == null) {
+                $createdAt = Carbon::now()->format('d-m-Y');
+                $file = $request->file('thumbnail', []);
+                foreach ($file as $data) {
+                    $filename = $createdAt . '_' . $data->getClientOriginalName();
+                    $data->storeAs('public/' . $folder . '/thumbnail', $filename);
 
-                TemporaryFile::create([
-                    'folder' => $folder,
-                    'filename' => $filename
-                ]);
+                    TemporaryFile::create([
+                        'folder' => $folder,
+                        'filename' => $filename
+                    ]);
+                }
+                $response = str_replace('"', '', $folder . '/' . $createdAt . '_' . $file[0]->getClientOriginalName());
+            } else {
+                $createdAt = Carbon::now()->format('d-m-Y');
+                $file = $request->file('images', []);
+                foreach ($file as $data) {
+                    $filename = $createdAt . '_' . $data->getClientOriginalName();
+                    $data->storeAs('public/' . $folder, $filename);
+
+                    TemporaryFile::create([
+                        'folder' => $folder,
+                        'filename' => $filename
+                    ]);
+                }
+                $response = str_replace('"', '', $folder . '/' . $createdAt . '_' . $file[0]->getClientOriginalName());
             }
-            $response = str_replace('"', '', $folder . '/' . $createdAt . '_' . $file[0]->getClientOriginalName());
         }
 
 
@@ -46,6 +61,8 @@ class UploadController extends Controller
     public function delete(Request $request)
     {
         $imagePath = str_replace('"', '', $request->getContent());
+
+        // dd($imagePath);
 
         unlink(storage_path('app/public/images/' . $imagePath));
         $temporaryFile = TemporaryFile::where('filename', substr($imagePath, strpos($imagePath, "/") + 1))->first();

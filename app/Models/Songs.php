@@ -12,7 +12,7 @@ class Songs extends Model
     protected $table = 'songs';
 
     protected $fillable = [
-        'title', 'genre', 'artist', 'likes', 'images', 'group', 'image'
+        'title', 'genre', 'artist', 'likes', 'song', 'group', 'image'
     ];
 
     public function comments()
@@ -23,7 +23,7 @@ class Songs extends Model
     public static function group()
     {
         return [
-            0 => 'Synema',
+            0 => 'Seynema',
             1 => 'Verse',
         ];
     }

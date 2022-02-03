@@ -65,7 +65,9 @@ class SongsController extends Controller
         $songs->likes = 0;
         $songs->group = $request->group;
         $songs->slug = Str::slug($request->title);
+
         $file = $request->input('images');
+        // dd($file);
         for ($i = 0; $i < count($file); $i++) {
             $pathRemoveQuote = trim($file[$i], '"');
             $imagePath = trim(substr($file[$i], strpos($file[$i], "/") + 1), '"');
@@ -77,6 +79,22 @@ class SongsController extends Controller
                     $songs->song = $pathRemoveQuote;
                 } else if ($i === 2) {
                     $songs->song = $pathRemoveQuote;
+                }
+                $temporaryFile->delete();
+            }
+        }
+        $file1 = $request->input('thumbnail');
+        for ($i = 0; $i < count($file1); $i++) {
+            $pathRemoveQuote = trim($file1[$i], '"');
+            $imagePath = trim(substr($file1[$i], strpos($file1[$i], "/") + 1), '"');
+            $temporaryFile = TemporaryFile::where('filename', $imagePath)->first();
+            if ($temporaryFile) {
+                if ($i === 0) {
+                    $songs->image = $pathRemoveQuote;
+                } else if ($i === 1) {
+                    $songs->image = $pathRemoveQuote;
+                } else if ($i === 2) {
+                    $songs->image = $pathRemoveQuote;
                 }
                 $temporaryFile->delete();
             }
@@ -134,10 +152,45 @@ class SongsController extends Controller
         $songs->title = $request->title;
         $songs->artists = $request->artists;
         $songs->genre = $request->genre;
-        $songs->group = $request->group;
         $songs->description = $request->description;
         $songs->likes = 0;
+        $songs->group = $request->group;
         $songs->slug = Str::slug($request->title);
+
+        $file = $request->input('images');
+        // dd($file);
+        for ($i = 0; $i < count($file); $i++) {
+            $pathRemoveQuote = trim($file[$i], '"');
+            $imagePath = trim(substr($file[$i], strpos($file[$i], "/") + 1), '"');
+            $temporaryFile = TemporaryFile::where('filename', $imagePath)->first();
+            if ($temporaryFile) {
+                if ($i === 0) {
+                    $songs->song = $pathRemoveQuote;
+                } else if ($i === 1) {
+                    $songs->song = $pathRemoveQuote;
+                } else if ($i === 2) {
+                    $songs->song = $pathRemoveQuote;
+                }
+                $temporaryFile->delete();
+            }
+        }
+        $file1 = $request->input('thumbnail');
+        for ($i = 0; $i < count($file1); $i++) {
+            $pathRemoveQuote = trim($file1[$i], '"');
+            $imagePath = trim(substr($file1[$i], strpos($file1[$i], "/") + 1), '"');
+            $temporaryFile = TemporaryFile::where('filename', $imagePath)->first();
+            if ($temporaryFile) {
+                if ($i === 0) {
+                    $songs->image = $pathRemoveQuote;
+                } else if ($i === 1) {
+                    $songs->image = $pathRemoveQuote;
+                } else if ($i === 2) {
+                    $songs->image = $pathRemoveQuote;
+                }
+                $temporaryFile->delete();
+            }
+        }
+
 
         $songs->save();
 
