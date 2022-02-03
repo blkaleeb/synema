@@ -1,6 +1,6 @@
 @extends('layouts.main', ['activePage' => 'songs-item'])
 @section('content')
-<div class="breadcumb-area single-podcast-breadcumb bg-img bg-overlay" style="background-image: url(img/bg-img/2.jpg);">
+<div class="breadcumb-area single-podcast-breadcumb bg-img bg-overlay" style="background-image: url(/img/bg-img/2.jpg);">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12 col-lg-8">

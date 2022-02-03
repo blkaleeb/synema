@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Banners;
 use App\Models\Songs;
+use App\Models\Tags;
 use App\Models\TemporaryFile;
 use Illuminate\Http\Request;
 
@@ -92,7 +93,13 @@ class BannerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $this->data['banner'] = Banners::where('id', $id)->first();
+
+        $this->data['songs'] = Songs::pluck('title', 'id');
+
+        $this->data['tags'] = Tags::pluck('name', 'id');
+
+        return view('admin.banner.form', $this->data);
     }
 
     /**
@@ -104,7 +111,34 @@ class BannerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $banner = Banners::where('id', $id)->first();
+        $banner->name = $request->name;
+        $banner->title = $request->title;
+        $banner->subtitle = $request->subtitle;
+        $banner->songs_id = $request->songs;
+        $banner->slug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $request->title)));
+        $banner->description = $request->description;
+
+        $file = $request->input('images');
+        for ($i = 0; $i < count($file); $i++) {
+            $pathRemoveQuote = trim($file[$i], '"');
+            $imagePath = trim(substr($file[$i], strpos($file[$i], "/") + 1), '"');
+            $temporaryFile = TemporaryFile::where('filename', $imagePath)->first();
+            if ($temporaryFile) {
+                if ($i === 0) {
+                    $banner->image = 'images/' . $pathRemoveQuote;
+                } else if ($i === 1) {
+                    $banner->image = 'images/' . $pathRemoveQuote;
+                } else if ($i === 2) {
+                    $banner->image = 'images/' . $pathRemoveQuote;
+                }
+                $temporaryFile->delete();
+            }
+        }
+
+        $banner->save();
+
+        return redirect('admin/banners')->with(['success' => 'Banner berhasil dibuat!']);
     }
 
     /**

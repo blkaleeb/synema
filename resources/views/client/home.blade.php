@@ -167,8 +167,8 @@
   <div class="container">
     <div class="poca-projects-menu mb-30 wow fadeInUp" data-wow-delay="0.3s">
       <div class="text-center portfolio-menu">
-        <button class="btn" data-filter=".entre">Synema</button>
-        <button class="btn" data-filter=".media">Verse</button>
+        <button class="btn" data-filter=".1">Seynema</button>
+        <button class="btn" data-filter=".2">Verse</button>
       </div>
     </div>
   </div>
@@ -178,7 +178,7 @@
 
       @foreach ($songs as $song)
       <!-- Single gallery Item -->
-      <div class="col-12 col-md-6 single_gallery_item entre wow fadeInUp" data-wow-delay="0.2s">
+      <div class="col-12 col-md-6 single_gallery_item {{ $song->group }} wow fadeInUp" data-wow-delay="0.2s">
         <!-- Welcome Music Area -->
         <div class="poca-music-area style-2 d-flex align-items-center flex-wrap">
           <div class="poca-music-thumbnail">
