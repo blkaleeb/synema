@@ -34,8 +34,9 @@ class BlogController extends Controller
     {
         $this->data['tags'] = Tags::pluck('name', 'id');
         $this->data['categories'] = ArticleCategory::pluck('name', 'id');
+        $this->data['categoryIDs'] = '';
 
-        return view('admin.articles.form', $this->data);
+        return view('admin.articles.create', $this->data);
     }
 
     /**
@@ -102,6 +103,8 @@ class BlogController extends Controller
 
         $this->data['tags'] = Tags::pluck('name', 'id');
         $this->data['categories'] = ArticleCategory::pluck('name', 'id');
+        $this->data['selectedTag'] = ArticleTag::with('tags')->where('article_id', $this->data['articles']->id)->get();
+
 
         return view('admin.articles.form', $this->data);
     }
@@ -116,8 +119,13 @@ class BlogController extends Controller
     {
         $this->data['articles'] = Article::where('id', $id)->first();
 
+        $articles = $this->data['articles'];
+
         $this->data['tags'] = Tags::pluck('name', 'id');
         $this->data['categories'] = ArticleCategory::pluck('name', 'id');
+        $this->data['selectedTag'] = ArticleTag::with('tags')->where('article_id', $this->data['articles']->id)->get();
+        $this->data['categoryIDs'] = $articles->category_id;
+        // dd($this->data['categoryIDs']);
 
         return view('admin.articles.form', $this->data);
     }
@@ -156,6 +164,15 @@ class BlogController extends Controller
         }
 
         $article->save();
+
+        if (isset($request->tags)) {
+            foreach ($request->tags as $tag) {
+                $articleTag = new ArticleTag();
+                $articleTag->article_id = $article->id;
+                $articleTag->tag_id = $tag;
+                $articleTag->save();
+            }
+        }
 
         return redirect('admin/articles')->with(['success' => 'Perubahan artikel berhasil!']);
     }

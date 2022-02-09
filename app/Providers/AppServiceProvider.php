@@ -32,6 +32,5 @@ class AppServiceProvider extends ServiceProvider
             '*',
             HomeComposer::class
         );
-        // View::share('compro',);
     }
 }

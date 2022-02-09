@@ -34,8 +34,11 @@
     <!-- FAVICON -->
     <link href={{ asset("admin/assets/img/favicon.png") }} rel="shortcut icon" /> 
     <!-- Get FilePond and FilePond image preview plugin styles from a CDN -->
-    <link href="https://unpkg.com/filepond/dist/filepond.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet" />
+<link
+    href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
+    rel="stylesheet"
+/>
     <!--
         HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
     -->

@@ -20,6 +20,8 @@ class PageController extends Controller
         $this->data['songs'] = Songs::orderBy('id', 'ASC')->get();
         $this->data['artists'] = Artist::orderBy('id', 'ASC')->get();
 
+        // dd($this->data['banners']);
+
         return view('client.home', $this->data);
     }
 

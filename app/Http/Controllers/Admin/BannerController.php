@@ -33,7 +33,7 @@ class BannerController extends Controller
     {
         $this->data['songs'] = Songs::pluck('title', 'id');
 
-        return view('admin.banner.form', $this->data);
+        return view('admin.banner.create', $this->data);
     }
 
     /**
@@ -97,6 +97,9 @@ class BannerController extends Controller
 
         $this->data['songs'] = Songs::pluck('title', 'id');
 
+        $this->data['songsId'] = $this->data['banner']->songs_id;
+        // dd($this->data['songsId']);
+
         $this->data['tags'] = Tags::pluck('name', 'id');
 
         return view('admin.banner.form', $this->data);
@@ -149,6 +152,9 @@ class BannerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $banner = Banners::find($id);
+        $banner->delete();
+
+        return redirect('admin/banners')->with(['success' => 'Banner berhasil dihapus!']);
     }
 }

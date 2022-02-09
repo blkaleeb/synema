@@ -17,10 +17,11 @@
               <h5 data-animation="fadeInUp" data-delay="300ms">{{ $banner->subtitle }}</h5>
               <div class="welcome-btn-group">
                 <a href="#" class="btn poca-btn m-2 ml-0 active" data-animation="fadeInUp" data-delay="500ms">Subscribe with iTunes</a>
-                <a href="#" class="btn poca-btn btn-2 m-2" data-animation="fadeInUp" data-delay="700ms">Subscribe with RSS</a>
+                <a href="#" class="btn poca-btn btn-2 m-2" data-animation="fadeInUp" data-delay="700ms" style="background-color: #1DB954">Subscribe with Spotify</a>
               </div>
             </div>
             <!-- Welcome Music Area -->
+            @if (!is_null($banner->songs))
             <div class="poca-music-area mt-100 d-flex align-items-center flex-wrap" data-animation="fadeInUp" data-delay="900ms">
               <div class="poca-music-thumbnail">
                 <img src="{{ asset('storage/' . $banner->songs->image) }}" alt="">
@@ -47,6 +48,7 @@
                 </div> --}}
               </div>
             </div>
+            @endif
           </div>
         </div>
       </div>
@@ -167,6 +169,7 @@
   <div class="container">
     <div class="poca-projects-menu mb-30 wow fadeInUp" data-wow-delay="0.3s">
       <div class="text-center portfolio-menu">
+        <button class="btn active" data-filter="*">All</button>
         <button class="btn" data-filter=".0">Seynema</button>
         <button class="btn" data-filter=".1">Verse</button>
       </div>

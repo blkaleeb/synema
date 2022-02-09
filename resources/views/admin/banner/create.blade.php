@@ -45,7 +45,7 @@
                         </div>
                         <div class="form-group">
                             {!! Form::label('songs', 'Songs') !!}
-                            {!! Form::select('songs', $songs , $songsId, ['class' => 'form-control', 'placeholder' => "-- Set songs --"]) !!}
+                            {!! Form::select('songs', $songs , null, ['class' => 'form-control', 'placeholder' => "-- Set songs --"]) !!}
                         </div>
                         <div class="form-footer pt-5 border-top">
                             <button type="submit" class="btn btn-primary btn-default">Save</button>
@@ -75,7 +75,7 @@
     });
     $('.dropdown-toggle').dropdown();
 </script>
-{{-- <script>
+<script>
     // Register plugins
     FilePond.registerPlugin(
       FilePondPluginFileValidateSize,
@@ -100,62 +100,5 @@
       forceRevert: true
     });
   }
-</script> --}}
-<script>
-    // prettier-ignore
-    const mainImage = {!! json_encode($banner->image, JSON_HEX_TAG) !!};
-
-        // Register plugins
-        FilePond.registerPlugin(
-        FilePondPluginFileValidateSize,
-        FilePondPluginImagePreview,
-        );
-        FilePond.setOptions({
-        server: {
-            process: '/admin/upload/banner',
-            revert: '/destroy',
-            headers: {
-            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            }
-        }
-        });
-
-        // const inputElement = document.querySelector(`input[id="mainImage"]`);
-        // const pond = FilePond.create(inputElement, {
-        //     forceRevert: true
-        // });
-
-        // for (let i = 0; i < 2; i++) {
-        //     const inputElement = document.querySelector(`input[id="sideImage${i}"]`);
-        //     const pond = FilePond.create(inputElement, {
-        //     forceRevert: true
-        //     });
-        // }
-
-        const inputElementMainImage = document.querySelector('input[id="mainImage"]');
-        const mainPond = FilePond.create(inputElementMainImage, {
-        forceRevert: true,
-        allowProcess: false,
-        files: [{
-        // the server file reference
-        source: `{{asset('storage/${mainImage}')}}` || '',
-
-        // set type to local to indicate an already uploaded file
-        options: {
-
-            // optional stub file information
-            file: {
-            name: `{{asset('storage/${mainImage}')}}`,
-            size: `3001025`,
-            type: 'image/png',
-            },
-
-            // pass poster property
-            metadata: {
-            poster: `{{asset('storage/${mainImage}')}}` || ''
-            },
-        },
-        }],
-    });
 </script>
 @endsection
