@@ -86,6 +86,8 @@ class SongsController extends Controller
         $file1 = $request->input('thumbnail');
         for ($i = 0; $i < count($file1); $i++) {
             $pathRemoveQuote = trim($file1[$i], '"');
+            $substr = "/";
+            $pathRemoveQuote = str_replace($substr, $substr . 'thumbnail/', $pathRemoveQuote);
             $imagePath = trim(substr($file1[$i], strpos($file1[$i], "/") + 1), '"');
             $temporaryFile = TemporaryFile::where('filename', $imagePath)->first();
             if ($temporaryFile) {
@@ -177,6 +179,8 @@ class SongsController extends Controller
         $file1 = $request->input('thumbnail');
         for ($i = 0; $i < count($file1); $i++) {
             $pathRemoveQuote = trim($file1[$i], '"');
+            $substr = "/";
+            $pathRemoveQuote = str_replace($substr, $substr . 'thumbnail/', $pathRemoveQuote);
             $imagePath = trim(substr($file1[$i], strpos($file1[$i], "/") + 1), '"');
             $temporaryFile = TemporaryFile::where('filename', $imagePath)->first();
             if ($temporaryFile) {
