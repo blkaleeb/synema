@@ -68,7 +68,7 @@ class PageController extends Controller
 
     public function song(Request $request, $group)
     {
-        if ($group == 'synema') {
+        if ($group == 'seynema') {
             $this->data['newSongs'] = Songs::where('group', 0)->latest()->first();
             $this->data['songs'] = Songs::where('group', 0)->latest()->get();
         } else {

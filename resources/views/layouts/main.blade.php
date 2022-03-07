@@ -4,28 +4,28 @@
 <head>
   <meta charset="UTF-8">
   @if(isset($links))
-    <meta name="keywords" content="{{ $links == null ? 'Synema' : $links->keywords }}">
-    <meta name="description" content="{{ $links == null ? 'Synema' : $links->description }}">
-    <meta name="author" content="Synema">
+    <meta name="keywords" content="{{ $links == null ? 'Inema' : $links->keywords }}">
+    <meta name="description" content="{{ $links == null ? 'Inema' : $links->description }}">
+    <meta name="author" content="Inema">
     {{-- SCRIPT CODE --}}
     {!! $links == null ? '' : $links->script !!}
   @else
-    <meta name="keywords" content="Synema">
-    <meta name="description" content="Synema">
-    <meta name="author" content="Synema">
+    <meta name="keywords" content="Inema">
+    <meta name="description" content="Inema">
+    <meta name="author" content="Inema">
   @endif
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- Title -->
   <title>
     @if ($activePage == 'songs-item')
-        {{ $songs->title }} | Synema
+        {{ $songs->title }} | !nema
     @elseif ($activePage == 'blog-item')
-        {{ $article->title }} | Synema
+        {{ $article->title }} | !nema
     @elseif ($activePage == 'artist-detail')
-        {{ $artists->name }} | Synema
+        {{ $artists->name }} | !nema
     @else
-        {{ $activePage }} | Synema
+        {{ $activePage }} | !nema
     @endif
   </title>
   <!-- Favicon -->

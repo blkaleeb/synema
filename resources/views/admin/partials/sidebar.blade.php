@@ -11,7 +11,7 @@
                     </g>
                 </svg>
 
-                <span class="brand-name text-truncate">Synema Worship</span>
+                <span class="brand-name text-truncate">!nema Apps</span>
             </a>
         </div>
 
