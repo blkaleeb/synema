@@ -44,6 +44,15 @@ class PageController extends Controller
             $this->data['articles'] = $searchValues->get();
         }
 
+        if ($request->has("tags_id")) {
+            $value = $request->tags_id;
+            $this->data['articles'] = $article
+                ->with(["tags"])
+                ->whereHas("tags", function ($q) use ($value) {
+                    $q->where("tag_id", "=", $value);
+                })->get();
+        }
+
         // dd($this->data['articles']);
 
         return view('client.blog', $this->data);
