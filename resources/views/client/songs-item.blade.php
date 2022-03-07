@@ -156,7 +156,7 @@
                 <img src="{{ asset('storage/' . $song->image) }}" alt="">
               </div>
               <div class="blog-content">
-                <a href="#" class="post-title">{{ $song->title }}</a>
+                <a href="{{ url('song-item/'.$song->id)}}" class="post-title">{{ $song->title }}</a>
                 <span class="post-date">{{ $song->created_at }}</span>
               </div>
             </div>

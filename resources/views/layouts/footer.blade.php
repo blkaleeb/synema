@@ -23,15 +23,13 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
       <div class="col-12 col-sm-6 col-lg-3">
         <div class="single-footer-widget mb-80">
           <!-- Widget Title -->
-          <h4 class="widget-title">Categories</h4>
+          <h4 class="widget-title">Our Records</h4>
 
           <!-- Catagories Nav -->
           <nav>
             <ul class="catagories-nav">
-              <li><a href="#">Entrepreneurship</a></li>
-              <li><a href="#">Media</a></li>
-              <li><a href="#">Tech</a></li>
-              <li><a href="#">Tutorials</a></li>
+              <li><a href="{{ url('songs' , 'seynema') }}">Seynema Worship</a></li>
+              <li><a href="{{ url('songs' , 'verse') }}">Verse Records</a></li>
             </ul>
           </nav>
         </div>
@@ -42,19 +40,17 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         <div class="single-footer-widget mb-80">
           <!-- Widget Title -->
           <h4 class="widget-title">Lastest Episodes</h4>
-
+          @foreach ($allsongs as $song )
           <!-- Single Latest Episodes -->
           <div class="single-latest-episodes">
-            <p class="episodes-date">December 9, 2018</p>
-            <a href="#" class="episodes-title">Episode 205 - See Ya In Three!</a>
+            <p class="episodes-date">{{ $song->created_at }}</p>
+            <a href="#" class="episodes-title">{{ $song->title }}</a>
           </div>
-          <!-- Single Latest Episodes -->
-          <div class="single-latest-episodes">
-            <p class="episodes-date">December 8, 2018</p>
-            <a href="#" class="episodes-title">Episode 204 - See Ya In Two!</a>
-          </div>
+          @endforeach
         </div>
       </div>
+
+      {{-- @dd($allsongs) --}}
 
       <!-- Single Footer Widget -->
       <div class="col-12 col-sm-6 col-lg-3">
