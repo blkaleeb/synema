@@ -85,6 +85,13 @@
                     </a>
                 </li>
 
+                <li class="{{ $activePage == 'Tree' ? 'active' : '' }}">
+                    <a class="sidenav-item-link" href="{{ url('admin/tree') }}">
+                        <i class="mdi mdi-link"></i>
+                        <span class="nav-text">Tree</span>
+                    </a>
+                </li>
+
                 <li class="{{ $activePage == 'Email' ? 'active' : '' }}">
                     <a class="sidenav-item-link" href="{{ url('admin/email') }}">
                         <i class="mdi mdi-email-alert"></i>
