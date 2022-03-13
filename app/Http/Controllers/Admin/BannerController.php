@@ -8,6 +8,8 @@ use App\Models\Songs;
 use App\Models\Tags;
 use App\Models\TemporaryFile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File; 
+
 
 class BannerController extends Controller
 {
@@ -123,6 +125,11 @@ class BannerController extends Controller
         $banner->description = $request->description;
 
         $file = $request->input('images');
+        if($file[0] == null && $banner->image != "#"){
+            $path = public_path()."/storage/".$banner->image;
+            File::delete($path);
+            $banner->image = "#";
+        }
         for ($i = 0; $i < count($file); $i++) {
             $pathRemoveQuote = trim($file[$i], '"');
             $imagePath = trim(substr($file[$i], strpos($file[$i], "/") + 1), '"');

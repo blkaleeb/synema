@@ -134,28 +134,27 @@
 
         const inputElementMainImage = document.querySelector('input[id="mainImage"]');
         const mainPond = FilePond.create(inputElementMainImage, {
-        forceRevert: true,
-        allowProcess: false,
-        files: [{
-        // the server file reference
-        source: `{{asset('storage/${mainImage}')}}` || '',
-
-        // set type to local to indicate an already uploaded file
-        options: {
-
-            // optional stub file information
-            file: {
-            name: `{{asset('storage/${mainImage}')}}`,
-            size: `3001025`,
-            type: 'image/png',
-            },
-
-            // pass poster property
-            metadata: {
-            poster: `{{asset('storage/${mainImage}')}}` || ''
-            },
-        },
-        }],
-    });
+            forceRevert: true,
+            allowProcess: false,
+        });
 </script>
+@if(isset($banner))
+<script>
+  const tmpImg = "{{ $banner->image }}";
+  if(tmpImg != "#"){
+    const img = "http://127.0.0.1:8000/storage/"+"{{$banner->image}}";
+    mainPond.files = [
+        {
+            source: img,
+            options: {
+                type: "local",
+                metadata: {
+                    poster: img,
+                }
+            }
+        }
+    ];
+  }
+</script>
+@endif
 @endsection

@@ -7,7 +7,7 @@ use App\Models\Songs;
 use App\Models\TemporaryFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-
+use Illuminate\Support\Facades\File; 
 use DB;
 use Auth;
 use Session;
@@ -158,9 +158,13 @@ class SongsController extends Controller
         $songs->likes = 0;
         $songs->group = $request->group;
         $songs->slug = Str::slug($request->title);
-
+        
         $file = $request->input('images');
-        // dd($file);
+        if($file[0] == null && $songs->song != "#"){
+            $path = public_path()."/storage/".$songs->song;
+            File::delete($path);
+            $songs->song = "#";
+        }
         for ($i = 0; $i < count($file); $i++) {
             $pathRemoveQuote = trim($file[$i], '"');
             $imagePath = trim(substr($file[$i], strpos($file[$i], "/") + 1), '"');
@@ -177,6 +181,11 @@ class SongsController extends Controller
             }
         }
         $file1 = $request->input('thumbnail');
+        if($file1[0] == null && $songs->image != null){
+            $path = public_path()."/storage/".$songs->image;
+            File::delete($path);
+            $songs->image = null;
+        }
         for ($i = 0; $i < count($file1); $i++) {
             $pathRemoveQuote = trim($file1[$i], '"');
             $substr = "/";

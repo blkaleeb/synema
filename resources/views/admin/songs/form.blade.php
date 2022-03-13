@@ -89,10 +89,43 @@
   const pond = FilePond.create(inputElement, {
     forceRevert: true
   });
-
   const inputElement1 = document.querySelector(`input[id="thumbnail"]`);
   const pond1 = FilePond.create(inputElement1, {
     forceRevert: true
   });
 </script>
+@if(isset($songs))
+<script>
+  const tmpSong = "{{ $songs->song }}";
+  if(tmpSong != "#"){
+    const song = "http://127.0.0.1:8000/storage/"+"{{$songs->song}}";
+    pond.files = [
+        {
+            source: song,
+            options: {
+                type: "local",
+                metadata: {
+                    poster: song,
+                }
+            }
+        }
+    ];
+  }
+  const tmpImg = "{{ $songs->image }}";
+  if(tmpImg != ""){
+    const img = "http://127.0.0.1:8000/storage/"+"{{$songs->image}}";
+    pond1.files = [
+        {
+            source: img,
+            options: {
+                type: "local",
+                metadata: {
+                    poster: img,
+                }
+            }
+        }
+    ];
+  }
+</script>
+@endif
 @endsection
