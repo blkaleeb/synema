@@ -7,6 +7,8 @@ use App\Models\Artist;
 use Illuminate\Http\Request;
 use App\Models\TemporaryFile;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\File; 
+
 
 class ArtistsController extends Controller
 {
@@ -105,6 +107,11 @@ class ArtistsController extends Controller
         $artist->role = $request->role;
         $artist->description = $request->description;
         $file = $request->input('images');
+        if($file[0] == null && $artist->image != "#"){
+            $path = public_path()."/storage/".$artist->image;
+            File::delete($path);
+            $artist->image = "#";
+        }
         for ($i = 0; $i < count($file); $i++) {
             $pathRemoveQuote = trim($file[$i], '"');
             $imagePath = trim(substr($file[$i], strpos($file[$i], "/") + 1), '"');
