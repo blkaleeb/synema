@@ -112,6 +112,16 @@
   const tmpImg = "{{ $artists->image }}";
   if(tmpImg != "#"){
     const img = "http://127.0.0.1:8000/storage/"+"{{$artists->image}}";
+    mainPond.server = {
+        load: (source, load, error, progress, abort, headers) => {
+            var myRequest = new Request(source);
+            fetch(myRequest).then(function(response) {
+              response.blob().then(function(myBlob) {
+                load(myBlob)
+              });
+            });         
+        },
+    };
     mainPond.files = [
         {
             source: img,
