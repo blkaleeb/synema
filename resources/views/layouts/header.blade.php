@@ -6,7 +6,8 @@
       <nav class="classy-navbar justify-content-between" id="pocaNav">
 
         <!-- Logo -->
-        <a class="nav-brand" href="{{ url('home') }}"><img src="{{ asset('img/core-img/logo.png') }}" alt=""></a>
+        <a class="nav-brand" href="{{ url('home') }}"><img src="{{ asset('img/core-img/logo.png') }}" alt="" style="-webkit-filter : drop-shadow(0px 0px 0 white) drop-shadow(0.1px 0.1px 0 white);
+filter: drop-shadow(0px 0px 0 white) drop-shadow(0.1px 0.1px 0 white);"></a>
 
         <!-- Navbar Toggler -->
         <div class="classy-navbar-toggler">

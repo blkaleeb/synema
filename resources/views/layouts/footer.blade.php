@@ -13,7 +13,7 @@
             <p>&copy; 
 
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | !nema
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
           </div>
         </div>
@@ -64,11 +64,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
             <a href="{{ isset($compro->spotify) ? $compro->spotify : '' }}" class="spotify" data-toggle="tooltip" data-placement="top" title="Pinterest"><i class="fa fa-spotify"></i></a>
             <a href="{{ isset($compro->instagram) ? $compro->instagram : '' }}" class="instagram" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a>
             <a href="{{ isset($compro->youtube) ? $compro->youtube : '' }}" class="youtube" data-toggle="tooltip" data-placement="top" title="YouTube"><i class="fa fa-youtube-play"></i></a>
-          </div>
-          <!-- App Download Button -->
-          <div class="app-download-button mt-30">
-            <a href="#"><img src="{{ asset('img/core-img/app-store.png') }}" alt=""></a>
-            <a href="#"><img src="{{ asset('img/core-img/google-play.png') }}" alt=""></a>
           </div>
         </div>
       </div>
