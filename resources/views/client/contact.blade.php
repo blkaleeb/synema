@@ -47,9 +47,9 @@
               <h6>We will be happy to assist you with any question</h6>
               <p>Lorem ipsum dolor sit amet, consetetur sadipscing esed diam nonumy eirmod tempor invidunt ut labore et dolore magna. Integer vehicula mauris libero, at molestie eros imperdiet sit amet. Suspendisse mattis ante sit amet ante.</p>
             </div>
-            <h5>Address: {{ $compro->address }}</h5>
-            <h5>Phone: {{ $compro->phone_number }}</h5>
-            <h5>Email: {{ $compro->email }} </h5>
+            <h5>Address: {{ isset($compro->address) ? $compro->address : '' }}</h5>
+            <h5>Phone: {{ isset($compro->phone) ? $compro->phone : ''}} </h5>
+            <h5>Email: {{ isset($compro->email) ? $compro->email : ''}} </h5>
             <h5>Open Hours: Mon - Fri: 8:00 AM to 6:00 PM</h5>
           </div>
         </div>
