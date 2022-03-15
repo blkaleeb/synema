@@ -16,8 +16,8 @@
               <h2 data-animation="fadeInUp" data-delay="100ms">{{ $banner->title }}</h2>
               <h5 data-animation="fadeInUp" data-delay="300ms">{{ $banner->subtitle }}</h5>
               <div class="welcome-btn-group">
-                <a href="#" class="btn poca-btn m-2 ml-0 active" data-animation="fadeInUp" data-delay="500ms">Subscribe with iTunes</a>
-                <a href="#" class="btn poca-btn btn-2 m-2" data-animation="fadeInUp" data-delay="700ms" style="background-color: #1DB954">Subscribe with Spotify</a>
+                {{-- <a href="#" class="btn poca-btn m-2 ml-0 active" data-animation="fadeInUp" data-delay="500ms">Subscribe with iTunes</a>
+                <a href="#" class="btn poca-btn btn-2 m-2" data-animation="fadeInUp" data-delay="700ms" style="background-color: #1DB954">Subscribe with Spotify</a> --}}
               </div>
             </div>
             <!-- Welcome Music Area -->
@@ -65,8 +65,8 @@
               <h2 data-animation="fadeInUp" data-delay="100ms">Listen Now</h2>
               <h5 data-animation="fadeInUp" data-delay="300ms">Please schedule a podcast post, to make it visible here.</h5>
               <div class="welcome-btn-group">
-                <a href="#" class="btn poca-btn m-2 ml-0 active" data-animation="fadeInUp" data-delay="500ms">Subscribe with iTunes</a>
-                <a href="#" class="btn poca-btn btn-2 m-2" data-animation="fadeInUp" data-delay="700ms">Subscribe with RSS</a>
+                {{-- <a href="#" class="btn poca-btn m-2 ml-0 active" data-animation="fadeInUp" data-delay="500ms">Subscribe with iTunes</a>
+                <a href="#" class="btn poca-btn btn-2 m-2" data-animation="fadeInUp" data-delay="700ms">Subscribe with RSS</a> --}}
               </div>
             </div>
             <!-- Welcome Music Area -->
@@ -111,8 +111,8 @@
               <h2 data-animation="fadeInUp" data-delay="100ms">Discover Today</h2>
               <h5 data-animation="fadeInUp" data-delay="300ms">Please schedule a podcast post, to make it visible here.</h5>
               <div class="welcome-btn-group">
-                <a href="#" class="btn poca-btn m-2 ml-0 active" data-animation="fadeInUp" data-delay="500ms">Subscribe with iTunes</a>
-                <a href="#" class="btn poca-btn btn-2 m-2" data-animation="fadeInUp" data-delay="700ms">Subscribe with RSS</a>
+                {{-- <a href="#" class="btn poca-btn m-2 ml-0 active" data-animation="fadeInUp" data-delay="500ms">Subscribe with iTunes</a>
+                <a href="#" class="btn poca-btn btn-2 m-2" data-animation="fadeInUp" data-delay="700ms">Subscribe with RSS</a> --}}
               </div>
             </div>
             <!-- Welcome Music Area -->

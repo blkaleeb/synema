@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\IndexController;
+use App\Http\Controllers\Admin\SongsController;
 use App\Http\Controllers\Admin\SubscribeController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Auth\ResetPasswordController;
@@ -57,7 +58,7 @@ Auth::routes();
 Route::group(
     ['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth']],
     function () {
-        Route::get('dashboard', [IndexController::class, 'index']);
+        Route::get('/', [IndexController::class, 'index']);
         Route::resource('songs', '\App\Http\Controllers\Admin\SongsController');
         Route::resource('links', '\App\Http\Controllers\Admin\LinksController');
         Route::resource('articles', '\App\Http\Controllers\Admin\BlogController');
@@ -74,6 +75,8 @@ Route::group(
 Route::delete("/destroy", [UploadController::class, 'delete'])->name("destroy");
 Route::post("/admin/upload/{folder}", [UploadController::class, 'store']);
 
-Route::get('/cms', [App\Http\Controllers\Admin\IndexController::class, 'index'])->name('cms');
+Route::get('cms', function () {
+    return redirect('admin/songs');
+});
 
 Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset.token');
