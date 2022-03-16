@@ -142,7 +142,7 @@
 <script>
   const tmpImg = "{{ $banner->image }}";
   if(tmpImg != "#"){
-    const img = "http://127.0.0.1:8000/storage/"+"{{$banner->image}}";
+    const img = "{{ env('IMAGE_PATH', 'http://127.0.0.1:8000/storage/') }}"+"{{$banner->image}}";
     mainPond.server = {
         load: (source, load, error, progress, abort, headers) => {
             var myRequest = new Request(source);
