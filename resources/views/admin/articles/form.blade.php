@@ -160,30 +160,67 @@
         //     });
         // }
 
-        const inputElementMainImage = document.querySelector('input[id="mainImage"]');
-        const mainPond = FilePond.create(inputElementMainImage, {
-        forceRevert: true,
-        allowProcess: false,
-        files: [{
+        //const inputElementMainImage = document.querySelector('input[id="mainImage"]');
+       // const mainPond = FilePond.create(inputElementMainImage, {
+       // forceRevert: true,
+       // allowProcess: false,
+       // files: [{
         // the server file reference
-        source: `{{asset('storage/${mainImage}')}}` || '',
+      //  source: `{{asset('storage/${mainImage}')}}` || '',
 
         // set type to local to indicate an already uploaded file
-        options: {
+      // options: {
 
             // optional stub file information
-            file: {
-            name: `{{asset('storage/${mainImage}')}}`,
-            size: `3001025`,
-            type: 'image/png',
-            },
+        //    file: {
+        //    name: `{{asset('storage/${mainImage}')}}`,
+        //    size: `3001025`,
+        //    type: 'image/png',
+        //    },
 
             // pass poster property
-            metadata: {
-            poster: `{{asset('storage/${mainImage}')}}` || ''
-            },
-        },
-        }],
-    });
+        //    metadata: {
+        //    poster: `{{asset('storage/${mainImage}')}}` || ''
+      //      },
+      // },
+       // }],
+    //});
+        const inputElementMainImage = document.querySelector('input[id="mainImage"]');
+        const mainPond = FilePond.create(inputElementMainImage, {
+            forceRevert: true,
+            allowProcess: false,
+        });
 </script>
+
+
+@if(isset($articles))
+<script>
+  const tmpImg = "{{ $articles->image }}";
+  if(tmpImg != "#"){
+    const img = "{{ env('IMAGE_PATH', 'http://127.0.0.1:8000/storage/') }}"+"{{$articles->image}}";
+    console.log("img = ", img);
+    mainPond.server = {
+        load: (source, load, error, progress, abort, headers) => {
+            var myRequest = new Request(source);
+            fetch(myRequest).then(function(response) {
+              response.blob().then(function(myBlob) {
+                load(myBlob)
+              });
+            });         
+        },
+    };
+    mainPond.files = [
+        {
+            source: img,
+            options: {
+                type: "local",
+                metadata: {
+                    poster: img,
+                }
+            }
+        }
+    ];
+  }
+</script>
+@endif
 @endsection

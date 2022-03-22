@@ -10,6 +10,7 @@ use App\Models\Tags;
 use App\Models\TemporaryFile;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File; 
 
 class BlogController extends Controller
 {
@@ -147,6 +148,12 @@ class BlogController extends Controller
         $article->description = $request->description;
 
         $file = $request->input('images');
+        if($file[0] == null && $article->image != "#"){
+            $path = public_path()."/storage/".$article->image;
+            File::delete($path);
+            $article->image = "#";
+        }
+
         for ($i = 0; $i < count($file); $i++) {
             $pathRemoveQuote = trim($file[$i], '"');
             $imagePath = trim(substr($file[$i], strpos($file[$i], "/") + 1), '"');
